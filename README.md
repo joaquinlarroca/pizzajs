@@ -1,3 +1,6 @@
+# Alpha-1.0.0
+Things may change a lot, erros are common.
+# 
 ![PizzaJS Logo](./source/icons/pizzaJS.png)
 # Pizza JS
 Built for basic games or little projects using HTML Canvas 2D
