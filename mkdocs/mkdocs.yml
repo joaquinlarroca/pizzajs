@@ -1,0 +1,72 @@
+site_name: PizzaJS
+repo_name: joaquinlarroca/pizzajs
+repo_url: https://github.com/joaquinlarroca/pizzajs
+
+nav:
+  - Home: index.md
+  - Functions: 
+    - Initialize: functions/initialize.md
+    - General: functions/general.md
+    - Text: functions/text.md
+  - Classes: 
+    - Actor: classes/actor.md
+    - Hitbox: classes/hitbox.md
+    - Hitbox2: classes/hitbox2.md
+    - Button: classes/button.md
+    - Rect: classes/rect.md
+    - Slider: classes/slider.md
+    - Sound: classes/sound.md
+  - Listeners: listeners/listeners.md
+  - Addons:
+    - MiniMontior: addons/miniMonitor.md
+    - DefaultScreenshot: addons/DefaultScreenshot.md
+    - Particle: addons/particle.md
+theme: 
+  favicon: img/PizzaJSx256C.png
+  icon:
+      logo: material/book-open
+      repo: fontawesome/brands/github
+  name: material
+  locale: en
+  highlightjs: true
+  shortcuts:
+    help: 191    # H
+    next: 190     # arrow left
+    previous: 188 # arrow rigth
+    search: 83   # Q
+  palette:
+      - scheme: default
+        toggle:
+          icon: material/brightness-7 
+          name: Switch to dark mode
+      - scheme: slate
+        toggle:
+          icon: material/brightness-3
+          name: Switch to light mode
+          primary: black
+          accent: blue 
+  features:
+    - content.code.copy
+    - content.code.select
+    - content.code.annotate
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.tabs
+
+markdown_extensions: 
+  - pymdownx.highlight:
+      anchor_linenums: true
+      linenums: true
+  - pymdownx.superfences
+  - codehilite
+  - pymdownx.highlight 
+  - pymdownx.inlinehilite 
+  - attr_list
+  - md_in_html
+  - admonition
+  
+
+
+
+
