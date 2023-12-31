@@ -59,7 +59,7 @@ initLoaderCheck()
 All documentation is provided at the [pizzajs site](https://joaquinlarroca.github.io/pizzajs/)
 
 ## Support
-To request support visit our [discord](https://discord.gg/BmNS5aBEPT) and select the get-role channel and get the pizzajs role to access the channels
+To request support visit our [discord](https://discord.gg/BmNS5aBEPT)
 
 ## Author
 | Avatar | Author |
