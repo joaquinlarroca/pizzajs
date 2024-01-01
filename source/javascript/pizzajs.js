@@ -16,7 +16,7 @@ export const errors = {
 }
 export const image = {}
 export let global = {
-    version: "v1.0",
+    version: "v1.1",
     build: "Beta",
     debug: false,
     actors: [],
