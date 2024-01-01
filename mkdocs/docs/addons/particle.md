@@ -1,7 +1,13 @@
-## Particle Class
+## Particle Creator: [https://joaquinlarroca.github.io/PizzaJS-particle-creator/](https://joaquinlarroca.github.io/PizzaJS-particle-creator/)
 
+```js
+import * as p from "./source/Addons/particle.js"
+```
+
+## Particle 
 Represents an individual particle in the system.
-Constructor
+
+
 
 ```javascript
 new Particle(x, y, size, color, speedX, speedY, lifespan, alphaReducer)
