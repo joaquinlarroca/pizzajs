@@ -38,18 +38,18 @@ If wanted, change the importing method
 
 ```js
 // Use `pjs` or anything as a prefix for PizzaJS
-import * as pjs from "/source/modules/index.js"
+import * as pjs from "./source/modules/index.js"
 ```
 
 ```js
 // Use PizzaJS without a prefix
-import { global, image } from '/source/modules/global.js'
+import { global, image } from './source/modules/global.js'
 // Import functions
-import { initLoaderCheck, canvas, ctx, drawtext, loadImage, loadSound, loadFont, fillRect, setup, start, clear, fitText, measureTextWidth } from '/source/modules/functions.js';
+import { initLoaderCheck, canvas, ctx, drawtext, loadImage, loadSound, loadFont, fillRect, setup, start, clear, fitText, measureTextWidth } from './source/modules/functions.js';
 // Import listeners
-import { setupAllEventListeners, setupMouseListener, setupResizeListener, setupKeyboardListener, keyPressed, mouse, pressedKeys } from '/source/modules/listener.js';
+import { setupAllEventListeners, setupMouseListener, setupResizeListener, setupKeyboardListener, keyPressed, mouse, pressedKeys } from './source/modules/listener.js';
 // Import all classes
-import { actor, button, hitbox, hitbox2, rect, sound, slider } from '/source/modules/classes.js';
+import { actor, button, hitbox, hitbox2, rect, sound, slider } from './source/modules/classes.js';
 
 // Starts the loadCheck
 initLoaderCheck()
