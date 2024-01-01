@@ -1,4 +1,4 @@
-import { global } from '/source/modules/global.js'
+import { global } from './global.js'
 import { canvas, setup } from './functions.js';
 
 export let mouse = {
