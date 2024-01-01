@@ -1,4 +1,4 @@
-import * as pjs from "/source/modules/index.js"
+import * as pjs from "../modules/index.js"
 let bar = new pjs.rect([0, 0], [pjs.canvas.width, pjs.canvas.height], "#0808ad")
 let text = 0
 let interval = setInterval(() => {
