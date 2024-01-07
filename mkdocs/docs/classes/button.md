@@ -15,7 +15,6 @@
 | `image`                   | Holds the image object if an image source is provided.            |
 | `usingColor`              | Indicates whether the actor is using a color instead of an image. |
 | `color`                   | Holds the color value if the actor is using a color.              |
-| `conditions`              | Object holding various conditions for the actor.                  |
 | `x, y`                    | Current position of the actor.                                    |
 | `width, height`           | Dimensions of the actor.                                          |
 | `halfwidth, halfheight`   | Half of the width and height of the actor.                        |
@@ -29,6 +28,10 @@
 | `anglex, angley`          | Position coordinates used for angle calculations.                 |
 | `angle`                   | Angle of rotation for the actor (in degrees).                     |
 | `alpha`                   | Transparency of the actor.                                        |
+| `radius`                  | The amount of rounding corners use array for changing independently each corner or a number to change all corners.                    |
+| `stroke.active`           | A boolean flag indicating whether the stroke (outline) should be active or not.  |
+| `stroke.color`           |  A string representing the color of the stroke in hexadecimal, RGB, or other supported formats.  |
+| `stroke.width`           |  A numerical value representing the width of the stroke in pixels.  |
 |`left, right, top, bottom` | Boundaries of the actor.                                          |
 | `timeout`                   | The timeout in ms                                      |
 | `canClickDueTimeout`                   | Boolean that stays true if it can be clicked if not it stays false                                        |

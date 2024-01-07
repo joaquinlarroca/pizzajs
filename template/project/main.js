@@ -1,4 +1,4 @@
-import * as pjs from "/source/modules/index.js"
+import * as pjs from "./source/modules/index.js"
 
 pjs.setup(1920, 1080, 0.9);
 

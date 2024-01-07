@@ -12,10 +12,8 @@ let MySlider = new pjs.slider("color:#000000", "color:#FFFFFF", [x, y], [size*2,
 window.addEventListener("pjsUpdate", () => {
     pjs.clear()
     MySlider.draw()
-    MySlider.hitbox.draw()
     pjs.ctx.fillStyle = "#FFFFFF"
-
-    pjs.drawtext(MySlider.percentage,[0,0],size/4)
+    pjs.drawtext(MySlider.percentage,[size/8,size/8],size/4)
 })
 
 pjs.start()

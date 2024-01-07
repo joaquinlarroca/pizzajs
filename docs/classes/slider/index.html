@@ -1015,7 +1015,7 @@
 <tbody>
 <tr>
 <td><code>background</code></td>
-<td>Holds the background image or color provided.</td>
+<td>Holds the background image.</td>
 </tr>
 <tr>
 <td><code>usingColor1</code></td>
@@ -1026,15 +1026,15 @@
 <td>Holds the color value of the slider background if is using a color.</td>
 </tr>
 <tr>
-<td><code>thumb</code></td>
-<td>Holds the thumb image or color provided.</td>
+<td><code>thumb.image</code></td>
+<td>Holds the thumb image</td>
 </tr>
 <tr>
-<td><code>usingColor2</code></td>
+<td><code>thumb.usingColor</code></td>
 <td>Indicates whether is using a color instead of an image for the thumb.</td>
 </tr>
 <tr>
-<td><code>color2</code></td>
+<td><code>thumb.color</code></td>
 <td>Holds the color value of the slider thumb if is using a color.</td>
 </tr>
 <tr>
@@ -1042,15 +1042,15 @@
 <td>Current position of the slider.</td>
 </tr>
 <tr>
-<td><code>thumbx, thumby</code></td>
+<td><code>thumb.x, thumb.y</code></td>
 <td>Current position of the thumb.</td>
 </tr>
 <tr>
-<td><code>thumbHeight</code></td>
+<td><code>thumb.height</code></td>
 <td>Height of the thumb</td>
 </tr>
 <tr>
-<td><code>thumbWidth</code></td>
+<td><code>thumb.width</code></td>
 <td>Width of the thumb</td>
 </tr>
 <tr>
@@ -1094,6 +1094,38 @@
 <td>Transparency of the actor.</td>
 </tr>
 <tr>
+<td><code>radius</code></td>
+<td>The amount of rounding corners use array for changing independently each corner or a number to change all corners.</td>
+</tr>
+<tr>
+<td><code>stroke.active</code></td>
+<td>A boolean flag indicating whether the stroke (outline) should be active or not.</td>
+</tr>
+<tr>
+<td><code>stroke.color</code></td>
+<td>A string representing the color of the stroke in hexadecimal, RGB, or other supported formats.</td>
+</tr>
+<tr>
+<td><code>stroke.width</code></td>
+<td>A numerical value representing the width of the stroke in pixels.</td>
+</tr>
+<tr>
+<td><code>thumb.radius</code></td>
+<td>The amount of rounding corners use array for changing independently each corner or a number to change all corners.</td>
+</tr>
+<tr>
+<td><code>thumb.stroke.active</code></td>
+<td>A boolean flag indicating whether the stroke (outline) should be active or not.</td>
+</tr>
+<tr>
+<td><code>thumb.stroke.color</code></td>
+<td>A string representing the color of the stroke in hexadecimal, RGB, or other supported formats.</td>
+</tr>
+<tr>
+<td><code>thumb.stroke.width</code></td>
+<td>A numerical value representing the width of the stroke in pixels.</td>
+</tr>
+<tr>
 <td><code>left, right, top, bottom</code></td>
 <td>Boundaries of the actor.</td>
 </tr>
@@ -1106,7 +1138,7 @@
 <td>Boolean that indicates if the thumb is being hovered.</td>
 </tr>
 <tr>
-<td><code>thumbBlocked</code></td>
+<td><code>thumb.blocked</code></td>
 <td>Boolean that blocks movement if its true</td>
 </tr>
 </tbody>

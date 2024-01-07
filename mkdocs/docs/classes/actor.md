@@ -18,15 +18,18 @@
 | `offsetX, offsetY`        | Offsets used for positioning.                                     |
 | `drag`                    | Object for handling dragging functionality.                       |
 | `hitbox`                  | Hitbox object for collision detection.                            |
-| `velocity`                | Velocity of the actor.                                            |
 | `width, height`           | Dimensions of the actor.                                          |
 | `halfwidth, halfheight`   | Half of the width and height of the actor.                        |
 | `pos`                     | Position coordinates of the actor.                                |
 | `anglex, angley`          | Position coordinates used for angle calculations.                 |
 | `angle`                   | Angle of rotation for the actor (in degrees).                     |
 | `alpha`                   | Transparency of the actor.                                        |
+| `radius`                  | The amount of rounding corners use array for changing independently each corner or a number to change all corners.                    |
+| `stroke.active`           | A boolean flag indicating whether the stroke (outline) should be active or not.  |
+| `stroke.color`           |  A string representing the color of the stroke in hexadecimal, RGB, or other supported formats.  |
+| `stroke.width`           |  A numerical value representing the width of the stroke in pixels.  |
 |`left, right, top, bottom` | Boundaries of the actor.                                          |
-| `global.actors`           | Adds the object to global.actors for addons                       |    
+| `global.actors`           | Adds the object to global.actors for addons                       |
 
 ## Methods
 
@@ -87,7 +90,6 @@ The drawAnchorPoint() method renders an anchor point for the actor on the canvas
 
     ![Image](./img/actor-anchor.png)
 
-
 ### `angletopoint(point)`
 
 The method determines the angle between the actor's current position and the specified target point and makes the actor angle toward the point, considering the actor's center as the reference except there is an offset.
@@ -112,5 +114,3 @@ Increases or decreases the size of the actor.
 |---------------------|-----------|---------------------------------------------------|----------------|
 | x                   | `number`  | Amount by which to increase width                 | -              |
 | y                   | `number`  | Amount by which to increase height                | -              |
-
-

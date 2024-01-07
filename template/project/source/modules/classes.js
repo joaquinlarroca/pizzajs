@@ -10,7 +10,7 @@ export class hitbox {
             global.error(11);
         }
         if (typeof multiplier != "number" || multiplier < 0 || multiplier > 1) {
-            global.error(12)
+            global.error(12);
         }
         this.multiplier = multiplier
         this.offsetX = offsetX
@@ -126,7 +126,7 @@ export class actor {
         }
         else {
             this.usingColor = false
-            this.image.src = loadImage(undefined,string[0])
+            this.image.src = loadImage(undefined, string[0])
         }
 
         this.conditions = {
@@ -154,10 +154,6 @@ export class actor {
             offsetY: 0,
         }
         this.hitbox = new hitbox(this, 0, undefined, this.offsetX, this.offsetY)
-        this.velocity = {
-            x: 0,
-            y: 0
-        }
 
         this.pos = [this.x + this.width / 2, this.y + this.height / 2]
 
@@ -171,6 +167,13 @@ export class actor {
         this.right = this.x + this.width
         this.top = this.y
         this.bottom = this.y + this.height
+
+        this.radius = 0
+        this.stroke = {
+            active: false,
+            color: "#FFFFFF",
+            width: 5
+        }
         global.actors.push(this)
     }
     draw() {
@@ -232,15 +235,36 @@ export class actor {
 
         ctx.save();
         ctx.translate(this.anglex, this.angley);
-
+        if(this.radius < 0){
+            this.radius = 0
+        }
         ctx.rotate(0.017453292519943295 * this.angle);
         ctx.globalAlpha = this.alpha;
         if (this.usingColor) {
             ctx.fillStyle = this.color
-            ctx.fillRect(-this.halfwidth + this.offsetX, -this.halfheight + this.offsetY, this.width, this.height);
+            ctx.beginPath();
+            ctx.roundRect(-this.halfwidth + this.offsetX, -this.halfheight + this.offsetY, this.width, this.height, this.radius);
+            if (this.stroke.active) {
+                ctx.strokeStyle = this.stroke.color;
+                ctx.lineWidth = this.stroke.width;
+                ctx.stroke();
+            }
+            ctx.closePath()
+            ctx.fill();
         }
         else {
+            ctx.fillStyle = "rgba(0,0,0,0)"
+            ctx.beginPath();
+            ctx.roundRect(-this.halfwidth, -this.halfheight, this.width, this.height, this.radius);
+            if (this.stroke.active) {
+                ctx.strokeStyle = this.stroke.color;
+                ctx.lineWidth = this.stroke.width;
+                ctx.stroke();
+            }
+            ctx.closePath()
+            ctx.clip()
             ctx.drawImage(this.image, -this.halfwidth + this.offsetX, -this.halfheight + this.offsetY, this.width, this.height);
+            ctx.fill();
         };
         ctx.restore();
     }
@@ -278,7 +302,7 @@ export class actor {
         else if (global.hasLoaded) {
             this.usingColor = false
             this.color = "#000000"
-            this.image.src = loadImage(undefined,string[0]);
+            this.image.src = loadImage(undefined, string[0]);
         }
         else {
             this.usingColor = false
@@ -307,7 +331,7 @@ export class button {
         else {
             this.usingColor = false
             this.color = "#000000"
-            this.image.src = loadImage(undefined,string[0])
+            this.image.src = loadImage(undefined, string[0])
         }
 
         global.buttons.push(this)
@@ -348,25 +372,12 @@ export class button {
         }
         this.timeout = timeoutMS
         this.canClickDueTimeout = true
-        //while ((this.text.ctxMeasure.height < this.desiredHeight || this.text.ctxMeasure.height === 0) ||
-        //    (this.text.ctxMeasure.width < this.desiredWidth && this.text.ctxMeasure.width < this.desiredHeight)) {
-        //     Adjust font size with a smaller increment to avoid overshooting
-        //    this.text.size += .25;
-        //
-        //    ctx.font = `${this.text.size}px ${this.text.fontFamily}`;
-        //    this.text.ctxMeasure = ctx.measureText(this.text.text);
-        //}
-
-        //if (this.text.text.length >= 24) {
-        //    this.text.text = this.text.text.substring(0, 24)
-        //}
-        //
-        //if ((this.height / this.width * 750) / this.text.text.length > this.height - 10) {
-        //    this.text.size = this.height - 20
-        //}
-        //else {
-        //    this.text.size = ((this.height / this.width * 700) / this.text.text.length);
-        //}
+        this.stroke = {
+            active: false,
+            color: "#FFFFFF",
+            width: 5
+        }
+        this.radius = 0
     }
     change(text, fontFamily) {
         this.text.text = text
@@ -377,7 +388,6 @@ export class button {
         this.halfheight = this.height / 2
         this.halfwidth = this.width / 2
         this.pos = [this.x + this.halfwidth, this.y + this.halfheight]
-
         if (this.hitbox.collidepoint(mouse.pos)) {
             this.hover = true
             if (mouse.click && mouse.objectSelected == undefined && this.canClickDueTimeout) {
@@ -396,7 +406,6 @@ export class button {
             this.hover = false
             this.click = false
         }
-
         this.left = this.x
         this.right = this.x + this.width
         this.top = this.y
@@ -407,12 +416,34 @@ export class button {
         ctx.translate(this.anglex, this.angley);
         ctx.rotate(0.017453292519943295 * this.angle);
         ctx.globalAlpha = this.alpha;
+        if (this.radius < 0) {
+            this.radius = 0
+        }
         if (this.usingColor) {
-            ctx.fillStyle = this.color
-            ctx.fillRect(-this.halfwidth, -this.halfheight, this.width, this.height);
+            ctx.fillStyle = this.color;
+            ctx.beginPath();
+            ctx.roundRect(-this.halfwidth, -this.halfheight, this.width, this.height, this.radius);
+            if (this.stroke.active) {
+                ctx.strokeStyle = this.stroke.color;
+                ctx.lineWidth = this.stroke.width
+                ctx.stroke();
+            }
+            ctx.closePath()
+            ctx.fill();
         }
         else {
+            ctx.fillStyle = "rgba(0,0,0,0)"
+            ctx.beginPath();
+            ctx.roundRect(-this.halfwidth, -this.halfheight, this.width, this.height, this.radius);
+            if (this.stroke.active) {
+                ctx.strokeStyle = this.stroke.color;
+                ctx.lineWidth = this.stroke.width;
+                ctx.stroke();
+            }
+            ctx.closePath()
+            ctx.clip()
             ctx.drawImage(this.image, -this.halfwidth, -this.halfheight, this.width, this.height);
+            ctx.fill();
         }
         ctx.restore();
         if (this.text.active) {
@@ -430,7 +461,7 @@ export class button {
         else if (global.hasLoaded) {
             this.usingColor = false
             this.color = "#000000"
-            this.image.src = loadImage(undefined,string[0]);
+            this.image.src = loadImage(undefined, string[0]);
         }
         else {
             this.usingColor = false
@@ -472,6 +503,12 @@ export class rect {
         this.anglex = 0
         this.halfheight = this.height / 2
         this.halfwidth = this.width / 2
+        this.radius = 0
+        this.stroke = {
+            active: false,
+            color: "#FFFFFF",
+            width: 5
+        }
     }
     draw() {
         this.pos = [this.x + this.halfwidth, this.y + this.halfheight]
@@ -482,12 +519,36 @@ export class rect {
         ctx.rotate(0.017453292519943295 * this.angle);
         ctx.globalAlpha = this.alpha;
         ctx.fillStyle = this.color
-        ctx.fillRect(-this.halfwidth, -this.halfheight, this.width, this.height)
+        ctx.beginPath();
+        ctx.roundRect(-this.halfwidth, -this.halfheight, this.width, this.height, this.radius);
+        if (this.stroke.active) {
+            ctx.strokeStyle = this.stroke.color;
+            ctx.lineWidth = this.stroke.width;
+            ctx.stroke();
+        }
+        ctx.closePath()
+        ctx.fill();
         ctx.restore();
     }
 }
 export class slider {
     constructor(background = "/source/icons/PizzaJS256x.png", thumb = "/source/icons/PizzaJS256x.png", [x = 0, y = 0], [width = 64, height = 16], thumbwidth = 16, [minpercentage = 0, maxpercentage = 100], sliderFill = "#00FF00", currentpercentage = 0) {
+        this.thumb = {
+            image: undefined,
+            x: x,
+            y: y,
+            height: height,
+            width: 0, // Defined later on code
+            blocked: false,
+            usingColor: false,
+            color: "#000000",
+            radius: 0,
+            stroke: {
+                active: false,
+                color: "#FFFFFF",
+                width: 5
+            }
+        }
         var image1 = background.split(":")
         this.background = new Image()
         if (image1[0] == "color") {
@@ -497,26 +558,18 @@ export class slider {
         else {
             this.usingColor1 = false
             this.color1 = "#000000"
-            this.background.src = loadImage(undefined,image1[0])
+            this.background.src = loadImage(undefined, image1[0])
         }
 
         var image2 = thumb.split(":")
-        this.thumb = new Image()
+        this.thumb.image = new Image()
         if (image2[0] == "color") {
-            this.usingColor2 = true
-            this.color2 = image2[1]
+            this.thumb.usingColor = true
+            this.thumb.color = image2[1]
         }
         else {
-            this.usingColor2 = false
-            this.color2 = "#000000"
-            this.thumb.src = loadImage(undefined,image2[0])
+            this.thumb.image.src = loadImage(undefined, image2[0])
         }
-
-        this.thumbx = x
-        this.thumby = y
-
-        this.thumbheight = height
-
         this.maxpercentage = maxpercentage
         this.minpercentage = minpercentage
         this.percentage = currentpercentage
@@ -524,11 +577,11 @@ export class slider {
         if (thumbwidth > width / 2) {
             thumbwidth = height
             this.width = thumbwidth
-            this.thumbwidth = width - thumbwidth
+            this.thumb.width = width - thumbwidth
         }
         else {
             this.width = thumbwidth
-            this.thumbwidth = width - thumbwidth
+            this.thumb.width = width - thumbwidth
         }
         this.height = height
 
@@ -539,7 +592,7 @@ export class slider {
         if (this.percentage > this.maxpercentage) {
             this.percentage = this.maxpercentage
         }
-        this.x = this.thumbx + ((this.percentage - this.minpercentage) * this.thumbwidth / (this.maxpercentage - this.minpercentage)) + this.width;
+        this.x = this.thumb.x + ((this.percentage - this.minpercentage) * this.thumb.width / (this.maxpercentage - this.minpercentage)) + this.width;
         this.y = y
 
         this.drag = {
@@ -564,12 +617,18 @@ export class slider {
 
         this.hover = false
         this.click = false
-        this.thumbBlocked = false
 
         this.sliderBgColor = sliderFill
+
+        this.radius = 0
+        this.stroke = {
+            active: false,
+            color: "#FFFFFF",
+            width: 5
+        }
     }
     draw() {
-        if (this.hitbox.collidepoint(mouse.pos) && !this.thumbBlocked) {
+        if (this.hitbox.collidepoint(mouse.pos) && !this.thumb.blocked) {
             this.hover = true
             if (mouse.click) {
                 this.click = true
@@ -581,7 +640,7 @@ export class slider {
         else {
             this.hover = false
         }
-        if ((((this.drag.hitbox.collidepoint(mouse.pos) && mouse.click && mouse.objectSelected == undefined) || this.drag.active && mouse.objectSelected == this)) && !this.thumbBlocked) {
+        if ((((this.drag.hitbox.collidepoint(mouse.pos) && mouse.click && mouse.objectSelected == undefined) || this.drag.active && mouse.objectSelected == this)) && !this.thumb.blocked) {
             if (!this.drag.hasSetOffset) {
                 this.drag.hasSetOffset = true;
                 mouse.objectSelected = this
@@ -590,18 +649,18 @@ export class slider {
             }
             this.drag.active = true
             this.x = mouse.x - this.drag.offsetX
-            if (this.x >= this.thumbx + this.thumbwidth + this.width) {
-                this.x = this.thumbx + this.thumbwidth + this.width
+            if (this.x >= this.thumb.x + this.thumb.width + this.width) {
+                this.x = this.thumb.x + this.thumb.width + this.width
             }
-            if (this.x <= this.thumbx + this.width) {
-                this.x = this.thumbx + this.width
+            if (this.x <= this.thumb.x + this.width) {
+                this.x = this.thumb.x + this.width
             }
-            this.percentage = Math.round(-((this.thumbx + this.width - this.x) / this.thumbwidth) * (this.maxpercentage - this.minpercentage) + this.minpercentage);
+            this.percentage = Math.round(-((this.thumb.x + this.width - this.x) / this.thumb.width) * (this.maxpercentage - this.minpercentage) + this.minpercentage);
             //this.percentage = -((this.thumbx + this.width - this.x) / this.thumbwidth) * (this.maxpercentage - this.minpercentage) + this.minpercentage;
         }
         else {
             this.drag.hasSetOffset = false;
-            this.x = this.thumbx + ((this.percentage - this.minpercentage) * this.thumbwidth / (this.maxpercentage - this.minpercentage)) + this.width;
+            this.x = this.thumb.x + ((this.percentage - this.minpercentage) * this.thumb.width / (this.maxpercentage - this.minpercentage)) + this.width;
         }
         if (this.drag.active && !mouse.click) {
             this.drag.active = false
@@ -615,30 +674,70 @@ export class slider {
         this.top = this.y
         this.bottom = this.y + this.height
 
-        this.anglex = this.thumbx + this.thumbwidth / 2
-        this.angley = this.thumby + this.thumbheight / 2
+        this.anglex = this.thumb.x + this.thumb.width / 2
+        this.angley = this.thumb.y + this.thumb.height / 2
         ctx.save();
         ctx.translate(this.anglex, this.angley);
         ctx.rotate(0.017453292519943295 * this.angle);
         ctx.globalAlpha = this.alpha;
+
         if (this.usingColor1) {
             ctx.fillStyle = this.color1
-            ctx.fillRect(-this.thumbwidth / 2, -this.height / 2, this.thumbwidth + this.width, this.height)
+            ctx.beginPath();
+            ctx.roundRect(-this.thumb.width / 2, -this.height / 2, this.thumb.width + this.width, this.height, this.radius);
+            if (this.stroke.active) {
+                ctx.strokeStyle = this.stroke.color;
+                ctx.lineWidth = this.stroke.width
+                ctx.stroke();
+            }
+            ctx.closePath()
+            ctx.clip()
+            ctx.fill();
         }
         else {
-            ctx.drawImage(this.background, -this.thumbwidth / 2, -this.height / 2, this.thumbwidth + this.width, this.height);
+            ctx.fillStyle = "rgba(0,0,0,0)"
+            ctx.beginPath();
+            ctx.roundRect(-this.thumb.width / 2, -this.height / 2, this.thumb.width + this.width, this.height, this.radius);
+            if (this.stroke.active) {
+                ctx.strokeStyle = this.stroke.color;
+                ctx.lineWidth = this.stroke.width;
+                ctx.stroke();
+            }
+            ctx.closePath()
+            ctx.clip()
+            ctx.drawImage(this.background, -this.thumb.width / 2, -this.height / 2, this.thumb.width + this.width, this.height);
+            ctx.fill();
         }
 
         ctx.fillStyle = this.sliderBgColor
-        ctx.fillRect((-this.thumbwidth / 2), -this.height / 2, this.x - this.thumbx - this.width / 2, this.height)
+        ctx.fillRect((-this.thumb.width / 2), -this.height / 2, this.x - this.thumb.x - this.width / 2, this.height)
 
 
-        if (this.usingColor2) {
-            ctx.fillStyle = this.color2
-            ctx.fillRect((-this.thumbwidth / 2) + this.x - this.thumbx - this.width, -this.thumbheight / 2, this.width, this.thumbheight)
+        if (this.thumb.usingColor) {
+            ctx.fillStyle = this.thumb.color
+            ctx.beginPath();
+            ctx.roundRect((-this.thumb.width / 2) + this.x - this.thumb.x - this.width, -this.thumb.height / 2, this.width, this.thumb.height, this.thumb.radius);
+            if (this.thumb.stroke.active) {
+                ctx.strokeStyle = this.thumb.stroke.color;
+                ctx.lineWidth = this.thumb.stroke.width
+                ctx.stroke();
+            }
+            ctx.closePath()
+            ctx.fill();
         }
         else {
-            ctx.drawImage(this.thumb, (-this.thumbwidth / 2) + this.x - this.thumbx - this.width, -this.thumbheight / 2, this.width, this.thumbheight);
+            ctx.fillStyle = "rgba(0,0,0,0)"
+            ctx.beginPath();
+            ctx.roundRect((-this.thumb.width / 2) + this.x - this.thumb.x - this.width, -this.thumb.height / 2, this.width, this.thumb.height, this.thumb.radius);
+            if (this.thumb.stroke.active) {
+                ctx.strokeStyle = this.thumb.stroke.color;
+                ctx.lineWidth = this.thumb.stroke.width
+                ctx.stroke();
+            }
+            ctx.clip()
+            ctx.closePath()
+            ctx.drawImage(this.thumb.image, (-this.thumb.width / 2) + this.x - this.thumb.x - this.width, -this.thumb.height / 2, this.width, this.thumb.height);
+            ctx.fill();
         }
 
 
@@ -654,7 +753,7 @@ export class slider {
         else if (global.hasLoaded) {
             this.usingColor1 = false
             this.color1 = "#000000"
-            this.background.src = loadImage(undefined,stringbackground[0]);
+            this.background.src = loadImage(undefined, stringbackground[0]);
         }
         else {
             this.usingColor1 = false
@@ -669,7 +768,7 @@ export class slider {
         else if (global.hasLoaded) {
             this.usingColor2 = false
             this.color2 = "#000000"
-            this.background.src = loadImage(undefined,stringthumb[0]);
+            this.thumb.image.src = loadImage(undefined, stringthumb[0]);
         }
         else {
             this.usingColor2 = false

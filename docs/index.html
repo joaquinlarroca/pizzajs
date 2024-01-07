@@ -420,6 +420,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#using-radius-and-stroke-property" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using radius and stroke property
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -915,6 +924,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#using-radius-and-stroke-property" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using radius and stroke property
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1146,6 +1164,81 @@
 <a id="__codelineno-4-16" name="__codelineno-4-16"></a><span class="nx">pjs</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
 <img alt="Image" src="img/color.png" /></p>
+</div>
+<h2 id="using-radius-and-stroke-property">Using radius and stroke property</h2>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span>
+<span class="normal"><a href="#__codelineno-5-11">11</a></span>
+<span class="normal"><a href="#__codelineno-5-12">12</a></span>
+<span class="normal"><a href="#__codelineno-5-13">13</a></span>
+<span class="normal"><a href="#__codelineno-5-14">14</a></span>
+<span class="normal"><a href="#__codelineno-5-15">15</a></span>
+<span class="normal"><a href="#__codelineno-5-16">16</a></span>
+<span class="normal"><a href="#__codelineno-5-17">17</a></span>
+<span class="normal"><a href="#__codelineno-5-18">18</a></span>
+<span class="normal"><a href="#__codelineno-5-19">19</a></span>
+<span class="normal"><a href="#__codelineno-5-20">20</a></span>
+<span class="normal"><a href="#__codelineno-5-21">21</a></span>
+<span class="normal"><a href="#__codelineno-5-22">22</a></span>
+<span class="normal"><a href="#__codelineno-5-23">23</a></span>
+<span class="normal"><a href="#__codelineno-5-24">24</a></span>
+<span class="normal"><a href="#__codelineno-5-25">25</a></span>
+<span class="normal"><a href="#__codelineno-5-26">26</a></span>
+<span class="normal"><a href="#__codelineno-5-27">27</a></span>
+<span class="normal"><a href="#__codelineno-5-28">28</a></span>
+<span class="normal"><a href="#__codelineno-5-29">29</a></span>
+<span class="normal"><a href="#__codelineno-5-30">30</a></span>
+<span class="normal"><a href="#__codelineno-5-31">31</a></span>
+<span class="normal"><a href="#__codelineno-5-32">32</a></span>
+<span class="normal"><a href="#__codelineno-5-33">33</a></span>
+<span class="normal"><a href="#__codelineno-5-34">34</a></span>
+<span class="normal"><a href="#__codelineno-5-35">35</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">pjs</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;/source/modules/index.js&quot;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="nx">pjs</span><span class="p">.</span><span class="nx">setup</span><span class="p">(</span><span class="mf">500</span><span class="p">,</span><span class="w"> </span><span class="mf">500</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="nx">pjs</span><span class="p">.</span><span class="nx">loadFont</span><span class="p">(</span><span class="s2">&quot;FiraCode&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/source/fonts/FiraCode/FiraCode-Regular.ttf&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="kd">let</span><span class="w"> </span><span class="nx">actor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">pjs</span><span class="p">.</span><span class="nx">actor</span><span class="p">(</span><span class="kc">undefined</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mf">32</span><span class="p">,</span><span class="w"> </span><span class="mf">114</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">50</span><span class="p">,</span><span class="w"> </span><span class="mf">50</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">])</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="kd">let</span><span class="w"> </span><span class="nx">button</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">pjs</span><span class="p">.</span><span class="nx">button</span><span class="p">(</span><span class="s2">&quot;color: #000000&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mf">26</span><span class="p">,</span><span class="w"> </span><span class="mf">32</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">128</span><span class="p">,</span><span class="w"> </span><span class="mf">50</span><span class="p">],</span><span class="w"> </span><span class="s2">&quot;Click&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;#FFFFFF&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">25</span><span class="p">,</span><span class="w"> </span><span class="mf">500</span><span class="p">)</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a>
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="kd">let</span><span class="w"> </span><span class="nx">slider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">pjs</span><span class="p">.</span><span class="nx">slider</span><span class="p">(</span><span class="s2">&quot;color: #000000&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;color: #7b7b7b&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mf">186</span><span class="p">,</span><span class="w"> </span><span class="mf">32</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">128</span><span class="p">,</span><span class="w"> </span><span class="mf">50</span><span class="p">],</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">100</span><span class="p">],</span><span class="w"> </span><span class="s2">&quot;#FFFFFF&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">50</span><span class="p">)</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a>
+<a id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="nx">actor</span><span class="p">.</span><span class="nx">stroke</span><span class="p">.</span><span class="nx">active</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12"></a><span class="nx">actor</span><span class="p">.</span><span class="nx">stroke</span><span class="p">.</span><span class="nx">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;#FF00FF&quot;</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="nx">actor</span><span class="p">.</span><span class="nx">stroke</span><span class="p">.</span><span class="nx">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14"></a><span class="nx">actor</span><span class="p">.</span><span class="nx">radius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">25</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">25</span><span class="p">]</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15"></a>
+<a id="__codelineno-5-16" name="__codelineno-5-16"></a><span class="nx">button</span><span class="p">.</span><span class="nx">stroke</span><span class="p">.</span><span class="nx">active</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17"></a><span class="nx">button</span><span class="p">.</span><span class="nx">stroke</span><span class="p">.</span><span class="nx">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18"></a><span class="nx">button</span><span class="p">.</span><span class="nx">radius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19"></a>
+<a id="__codelineno-5-20" name="__codelineno-5-20"></a><span class="nx">slider</span><span class="p">.</span><span class="nx">stroke</span><span class="p">.</span><span class="nx">active</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21"></a><span class="nx">slider</span><span class="p">.</span><span class="nx">stroke</span><span class="p">.</span><span class="nx">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22"></a><span class="nx">slider</span><span class="p">.</span><span class="nx">radius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23"></a>
+<a id="__codelineno-5-24" name="__codelineno-5-24"></a><span class="nx">slider</span><span class="p">.</span><span class="nx">thumb</span><span class="p">.</span><span class="nx">stroke</span><span class="p">.</span><span class="nx">active</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25"></a><span class="nx">slider</span><span class="p">.</span><span class="nx">thumb</span><span class="p">.</span><span class="nx">stroke</span><span class="p">.</span><span class="nx">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26"></a><span class="nx">slider</span><span class="p">.</span><span class="nx">thumb</span><span class="p">.</span><span class="nx">stroke</span><span class="p">.</span><span class="nx">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;#000000&quot;</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27"></a><span class="nx">slider</span><span class="p">.</span><span class="nx">thumb</span><span class="p">.</span><span class="nx">radius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">25</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28"></a>
+<a id="__codelineno-5-29" name="__codelineno-5-29"></a><span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;pjsUpdate&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30"></a><span class="w">    </span><span class="nx">pjs</span><span class="p">.</span><span class="nx">clear</span><span class="p">()</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31"></a><span class="w">    </span><span class="nx">actor</span><span class="p">.</span><span class="nx">draw</span><span class="p">()</span>
+<a id="__codelineno-5-32" name="__codelineno-5-32"></a><span class="w">    </span><span class="nx">button</span><span class="p">.</span><span class="nx">draw</span><span class="p">()</span>
+<a id="__codelineno-5-33" name="__codelineno-5-33"></a><span class="w">    </span><span class="nx">slider</span><span class="p">.</span><span class="nx">draw</span><span class="p">()</span>
+<a id="__codelineno-5-34" name="__codelineno-5-34"></a><span class="p">})</span>
+<a id="__codelineno-5-35" name="__codelineno-5-35"></a><span class="nx">pjs</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<p><img alt="Image" src="img/roundstroke.png" /></p>
 </div>
 <!-- Place this tag in your head or just before your close body tag. -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>

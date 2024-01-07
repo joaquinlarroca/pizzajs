@@ -117,6 +117,47 @@ On classes instead of putting an image, color can by used by simply adding `colo
     ![Image](./img/color.png)
 
 
+## Using radius and stroke property
+!!! Example 
+    ```js
+    import * as pjs from "/source/modules/index.js"
+    pjs.setup(500, 500, 1);
+    pjs.loadFont("FiraCode", "/source/fonts/FiraCode/FiraCode-Regular.ttf")
+
+    let actor = new pjs.actor(undefined, [32, 114], [50, 50], [0, 0])
+
+    let button = new pjs.button("color: #000000", [26, 32], [128, 50], "Click", "#FFFFFF", 25, 500)
+
+    let slider = new pjs.slider("color: #000000", "color: #7b7b7b", [186, 32], [128, 50], 50, [0, 100], "#FFFFFF", 50)
+
+    actor.stroke.active = true
+    actor.stroke.color = "#FF00FF"
+    actor.stroke.width = 2
+    actor.radius = [25, 5, 5, 25]
+
+    button.stroke.active = true
+    button.stroke.width = 2
+    button.radius = 5
+
+    slider.stroke.active = true
+    slider.stroke.width = 2
+    slider.radius = 5
+
+    slider.thumb.stroke.active = true
+    slider.thumb.stroke.width = 2
+    slider.thumb.stroke.color = "#000000"
+    slider.thumb.radius = 25
+
+    window.addEventListener("pjsUpdate", () => {
+        pjs.clear()
+        actor.draw()
+        button.draw()
+        slider.draw()
+    })
+    pjs.start()
+    ```
+
+    ![Image](./img/roundstroke.png)
 <!-- Place this tag in your head or just before your close body tag. -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 

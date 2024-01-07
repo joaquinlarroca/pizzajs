@@ -11,16 +11,16 @@
 
 | Attributes                | Description                                                          |
 |---------------------------|----------------------------------------------------------------------|
-| `background`              | Holds the background image or color provided.                        |
+| `background`              | Holds the background image.                        |
 | `usingColor1`             | Indicates whether is using a color instead of an image in background.|
 | `color1`                  | Holds the color value of the slider background if is using a color.  |
-| `thumb`                   | Holds the thumb image or color provided.                             |
-| `usingColor2`             | Indicates whether is using a color instead of an image for the thumb.|
-| `color2`                  | Holds the color value of the slider thumb if is using a color.       |
+| `thumb.image`            | Holds the thumb image                             |
+| `thumb.usingColor`             | Indicates whether is using a color instead of an image for the thumb.|
+| `thumb.color`                  | Holds the color value of the slider thumb if is using a color.       |
 | `x, y`                    | Current position of the slider.                                      |
-| `thumbx, thumby`          | Current position of the thumb.                                       |
-| `thumbHeight`             | Height of the thumb                                                  |
-| `thumbWidth`              | Width of the thumb                                                   |
+| `thumb.x, thumb.y`          | Current position of the thumb.                                       |
+| `thumb.height`             | Height of the thumb                                                  |
+| `thumb.width`              | Width of the thumb                                                   |
 | `maxpercentage`           | The maximum percentage the slider can reach.                         |
 | `minpercentage`           | The minimum percentage the slider can reach.                         |
 | `percentage`              | Current percentage the slider is in.                                 |
@@ -31,10 +31,18 @@
 | `anglex, angley`          | Position coordinates used for angle calculations.                    |
 | `angle`                   | Angle of rotation for the slider (in degrees).                       |
 | `alpha`                   | Transparency of the actor.                                           |
+| `radius`                  | The amount of rounding corners use array for changing independently each corner or a number to change all corners.                    |
+| `stroke.active`           | A boolean flag indicating whether the stroke (outline) should be active or not.  |
+| `stroke.color`           |  A string representing the color of the stroke in hexadecimal, RGB, or other supported formats.  |
+| `stroke.width`           |  A numerical value representing the width of the stroke in pixels.  |
+| `thumb.radius`                  | The amount of rounding corners use array for changing independently each corner or a number to change all corners.                    |
+| `thumb.stroke.active`           | A boolean flag indicating whether the stroke (outline) should be active or not.  |
+| `thumb.stroke.color`           |  A string representing the color of the stroke in hexadecimal, RGB, or other supported formats.  |
+| `thumb.stroke.width`           |  A numerical value representing the width of the stroke in pixels.  |
 |`left, right, top, bottom` | Boundaries of the actor.                                             |
 | `click`                   | Boolean that indicates if the thumb is being clicked.                |
 | `hover`                   | Boolean that indicates if the thumb is being hovered.                |
-| `thumbBlocked`            | Boolean that blocks movement if its true                             |
+| `thumb.blocked`            | Boolean that blocks movement if its true                             |
 
 ## Methods
 
