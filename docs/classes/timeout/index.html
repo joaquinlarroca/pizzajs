@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../../listeners/listeners/">
+        <link rel="prev" href="../slider/">
       
       
-        <link rel="next" href="../DefaultScreenshot/">
+        <link rel="next" href="../sound/">
       
       
       <link rel="icon" href="../../img/PizzaJSx256C.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>MiniMontior - PizzaJS</title>
+        <title>Timeout - PizzaJS</title>
       
     
     
@@ -71,6 +71,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#attributes" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -101,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              MiniMontior
+              Timeout
             
           </span>
         </div>
@@ -241,11 +246,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../classes/actor/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../actor/" class="md-tabs__link">
           
   
   Classes
@@ -276,13 +283,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../addons/miniMonitor/" class="md-tabs__link">
           
   
   Addons
@@ -472,8 +477,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -482,12 +489,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -501,7 +508,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Classes
@@ -515,7 +522,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../classes/actor/" class="md-nav__link">
+      <a href="../actor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -536,7 +543,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../classes/hitbox/" class="md-nav__link">
+      <a href="../hitbox/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -557,7 +564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../classes/hitbox2/" class="md-nav__link">
+      <a href="../hitbox2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -578,7 +585,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../classes/button/" class="md-nav__link">
+      <a href="../button/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -599,7 +606,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../classes/rect/" class="md-nav__link">
+      <a href="../rect/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -620,7 +627,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../classes/slider/" class="md-nav__link">
+      <a href="../slider/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -638,10 +645,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../classes/timeout/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Timeout
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -650,6 +675,57 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Attributes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#start" class="md-nav__link">
+    <span class="md-ellipsis">
+      start()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -662,7 +738,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../classes/sound/" class="md-nav__link">
+      <a href="../sound/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -707,8 +783,6 @@
       
   
   
-    
-  
   
   
     
@@ -719,12 +793,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
@@ -738,7 +812,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Addons
@@ -749,17 +823,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../addons/miniMonitor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -768,7 +835,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -781,7 +847,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../DefaultScreenshot/" class="md-nav__link">
+      <a href="../../addons/DefaultScreenshot/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -802,7 +868,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../particle/" class="md-nav__link">
+      <a href="../../addons/particle/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -841,6 +907,47 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Attributes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#start" class="md-nav__link">
+    <span class="md-ellipsis">
+      start()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -857,12 +964,113 @@
   
 
 
-  <h1>MiniMontior</h1>
+  <h1>Timeout</h1>
 
-<p>An overlay that draws using <code>pjsAfterClear</code>. Shows fps and deltaTime
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">import</span><span class="w"> </span><span class="s2">&quot;./source/Addons/miniMonitor.js&quot;</span>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>timeMS</td>
+<td><code>number</code></td>
+<td>The time in ms of the delay before it can be started.</td>
+<td>1000</td>
+</tr>
+</tbody>
+</table>
+<h2 id="attributes">Attributes</h2>
+<table>
+<thead>
+<tr>
+<th>Attributes</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>timeMS</code></td>
+<td>The time in ms of the delay before it can be started.</td>
+</tr>
+<tr>
+<td><code>active</code></td>
+<td>Indicates whether the timeout is finished or not started and when its running.</td>
+</tr>
+<tr>
+<td><code>timeElapsed</code></td>
+<td>Holds the time elapsed since start() up to timeMS in milliseconds</td>
+</tr>
+</tbody>
+</table>
+<h2 id="methods">Methods</h2>
+<h3 id="start">start()</h3>
+<p>The start() method is responsible for starting the timeout (setting active to true for the time specified).</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#__codelineno-0-19">19</a></span>
+<span class="normal"><a href="#__codelineno-0-20">20</a></span>
+<span class="normal"><a href="#__codelineno-0-21">21</a></span>
+<span class="normal"><a href="#__codelineno-0-22">22</a></span>
+<span class="normal"><a href="#__codelineno-0-23">23</a></span>
+<span class="normal"><a href="#__codelineno-0-24">24</a></span>
+<span class="normal"><a href="#__codelineno-0-25">25</a></span>
+<span class="normal"><a href="#__codelineno-0-26">26</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">pjs</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;/source/modules/index.js&quot;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="nx">pjs</span><span class="p">.</span><span class="nx">setup</span><span class="p">(</span><span class="mf">1920</span><span class="p">,</span><span class="w"> </span><span class="mf">1080</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="kd">let</span><span class="w"> </span><span class="nx">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">48</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="kd">let</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pjs</span><span class="p">.</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="kd">let</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pjs</span><span class="p">.</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="kd">let</span><span class="w"> </span><span class="nx">MyTimeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">pjs</span><span class="p">.</span><span class="nx">timeout</span><span class="p">(</span><span class="mf">1500</span><span class="p">)</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;pjsUpdate&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">    </span><span class="nx">pjs</span><span class="p">.</span><span class="nx">clear</span><span class="p">()</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="nx">pjs</span><span class="p">.</span><span class="nx">mouse</span><span class="p">.</span><span class="nx">click</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="nx">MyTimeout</span><span class="p">.</span><span class="nx">active</span><span class="p">){</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">        </span><span class="nx">MyTimeout</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="nx">MyTimeout</span><span class="p">.</span><span class="nx">active</span><span class="p">){</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="w">        </span><span class="nx">pjs</span><span class="p">.</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">fillStyle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;#FF0000&quot;</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="w">    </span><span class="k">else</span><span class="p">{</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="w">        </span><span class="nx">pjs</span><span class="p">.</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">fillStyle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;#00FF00&quot;</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="w">    </span><span class="nx">pjs</span><span class="p">.</span><span class="nx">drawtext</span><span class="p">(</span><span class="nx">MyTimeout</span><span class="p">.</span><span class="nx">active</span><span class="p">,[</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">],</span><span class="nx">size</span><span class="p">,</span><span class="s2">&quot;sans-serif&quot;</span><span class="p">,</span><span class="s2">&quot;middle&quot;</span><span class="p">,</span><span class="s2">&quot;center&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="p">})</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a>
+<a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="nx">pjs</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-<img alt="Image" src="../img/miniMonitor.png" /></p>
+Before Clicking
+<img alt="Image" src="../img/timeout2.png" />
+After Clicking
+<img alt="Image" src="../img/timeout1.png" />
+After 1.5 seconds
+<img alt="Image" src="../img/timeout2.png" /></p>
+</div>
 
 
 

@@ -1,7 +1,7 @@
 import { global, image } from './global.js'
-import { initLoaderCheck, canvas, ctx, drawtext, loadImage, loadSound, loadFont, fillRect, setup, start, clear, fitText, measureTextWidth } from './functions.js';
+import { initLoaderCheck, canvas, ctx, drawtext, loadImage, loadSound, loadFont, fillRect, setup, start, clear, fitText, measureTextWidth, shakeScreen } from './functions.js';
 import { setupAllEventListeners, setupMouseListener, setupResizeListener, setupKeyboardListener, keyPressed, mouse, pressedKeys } from './listener.js';
-import { actor, button, hitbox, hitbox2, rect, sound, slider } from './classes.js';
+import { actor, button, hitbox, hitbox2, rect, sound, slider, timeout } from './classes.js';
 
 initLoaderCheck()
 
@@ -20,6 +20,7 @@ export {
     start,
     canvas,
     clear,
+    shakeScreen,
     setupAllEventListeners,
     setupMouseListener,
     setupResizeListener,
@@ -32,6 +33,7 @@ export {
     hitbox,
     hitbox2,
     rect,
+    timeout,
     sound,
     slider
 };
