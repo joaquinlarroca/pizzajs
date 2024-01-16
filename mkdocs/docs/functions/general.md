@@ -63,7 +63,7 @@ loadSound(url);
 
 | Parameters | Type        | Description                                                                 | Default Value |
 |------------|-------------|-----------------------------------------------------------------------------|---------------|
-| url        | `string`    | The URL pointing to the sound file to be downloaded and used.               | "undefined"   |
+| url        | `string`    | The URL pointing to the sound file to be downloaded and used.               | -  |
 
 
 ## **Clear**
@@ -110,3 +110,16 @@ fillRect(x, y, width, height);
     ```
 
     ![Image](./img/fillrect.png)
+
+## **Shake Screen**
+
+The `shakeScreen` function shakes the screen with a duration and time specified.
+
+```js
+shakeScreen(intensity, duration);
+```
+
+| Parameters | Type        | Description                                                                 | Default Value |
+|------------|-------------|-----------------------------------------------------------------------------|---------------|
+| intensity  | `number`    | The intensity of the shake.                                                 |       -       |
+| duration   | `number`    | Duration in ms.                                                             |       -       |

@@ -15,6 +15,7 @@ nav:
     - Button: classes/button.md
     - Rect: classes/rect.md
     - Slider: classes/slider.md
+    - Timeout: classes/timeout.md
     - Sound: classes/sound.md
   - Listeners: listeners/listeners.md
   - Addons:

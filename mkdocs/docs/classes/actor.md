@@ -106,6 +106,14 @@ Changes the image/color of the actor.
 |---------------------|-----------|---------------------------------------------------|----------------|
 | string              | `string`  | Image URL or color code format.                   | -              |
 
+### `move(steps)`
+
+If the number of steps is positive, the sprite will move forward in the direction it's facing.
+
+| Parameters          | Type      | Description                                       | Default Value  |
+|---------------------|-----------|---------------------------------------------------|----------------|
+| steps               | `number`  | Amount of pixels to move                          | -              |
+
 ### `grow(x, y)`
 
 Increases or decreases the size of the actor.

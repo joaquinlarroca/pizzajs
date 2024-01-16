@@ -7,10 +7,10 @@ export class hitbox {
         if (typeof this.that.x != "number" || typeof this.that.y != "number" ||
             typeof this.that.width != "number" || typeof this.that.height != "number" ||
             this.that.width <= 0 || this.that.height <= 0 || typeof offsetX != "number" || typeof offsetY != "number") {
-            global.error(11);
+            global.error("c", 1);
         }
         if (typeof multiplier != "number" || multiplier < 0 || multiplier > 1) {
-            global.error(12);
+            global.error("c", 2);
         }
         this.multiplier = multiplier
         this.offsetX = offsetX
@@ -68,7 +68,7 @@ export class hitbox2 {
         if (typeof x != "number" || typeof y != "number" ||
             typeof width != "number" || typeof height != "number" ||
             width <= 0 || height <= 0) {
-            global.error(11);
+            global.error("c", 1);
         }
         this.x = x
         this.y = y
@@ -115,66 +115,74 @@ export class hitbox2 {
 }
 export class actor {
     constructor(string = "/source/icons/PizzaJS256x.png", [x = 0, y = 0], [width = 32, height = 32], [offsetX = 0, offsetY = 0]) {
-        if (width <= 0 || height <= 0) {
-            global.error(13);
+        if (typeof width != "number" || width <= 0 || typeof height != "number" || height <= 0) {
+            global.error("c", 3);
         }
-        string = string.split(":")
-        this.image = new Image()
-        if (string[0] == "color") {
-            this.usingColor = true
-            this.color = string[1]
+        else if (typeof x != "number" || typeof y != "number") {
+            global.error("c", 4);
+        }
+        else if (typeof offsetX != "number" || typeof offsetY != "number") {
+            global.error("c", 5);
         }
         else {
-            this.usingColor = false
-            this.image.src = loadImage(undefined, string[0])
+            string = string.split(":")
+            this.image = new Image()
+            if (string[0] == "color") {
+                this.usingColor = true
+                this.color = string[1]
+            }
+            else {
+                this.usingColor = false
+                this.image.src = loadImage(undefined, string[0])
+            }
+
+            this.conditions = {
+                canExitCanvas: false,
+                isDraggable: false,
+            }
+
+
+            this.x = x - offsetX
+            this.y = y - offsetY
+            this.offsetX = offsetX
+            this.offsetY = offsetY
+
+            this.width = width
+            this.height = height
+
+            this.halfwidth = this.width / 2
+            this.halfheight = this.height / 2
+
+            this.drag = {
+                hitbox: new hitbox(this, 0, undefined, this.offsetX, this.offsetY),
+                active: false,
+                hasSetOffset: false,
+                offsetX: 0,
+                offsetY: 0,
+            }
+            this.hitbox = new hitbox(this, 0, undefined, this.offsetX, this.offsetY)
+
+            this.pos = [this.x + this.width / 2, this.y + this.height / 2]
+
+            this.anglex = this.x + this.width / 2
+            this.angley = this.y + this.height / 2
+            this.angle = 0
+
+            this.alpha = 1
+
+            this.left = this.x
+            this.right = this.x + this.width
+            this.top = this.y
+            this.bottom = this.y + this.height
+
+            this.radius = 0
+            this.stroke = {
+                active: false,
+                color: "#FFFFFF",
+                width: 5
+            }
+            global.actors.push(this)
         }
-
-        this.conditions = {
-            canExitCanvas: false,
-            isDraggable: false,
-        }
-
-
-        this.x = x - offsetX
-        this.y = y - offsetY
-        this.offsetX = offsetX
-        this.offsetY = offsetY
-
-        this.width = width
-        this.height = height
-
-        this.halfwidth = this.width / 2
-        this.halfheight = this.height / 2
-
-        this.drag = {
-            hitbox: new hitbox(this, 0, undefined, this.offsetX, this.offsetY),
-            active: false,
-            hasSetOffset: false,
-            offsetX: 0,
-            offsetY: 0,
-        }
-        this.hitbox = new hitbox(this, 0, undefined, this.offsetX, this.offsetY)
-
-        this.pos = [this.x + this.width / 2, this.y + this.height / 2]
-
-        this.anglex = this.x + this.width / 2
-        this.angley = this.y + this.height / 2
-        this.angle = 0
-
-        this.alpha = 1
-
-        this.left = this.x
-        this.right = this.x + this.width
-        this.top = this.y
-        this.bottom = this.y + this.height
-
-        this.radius = 0
-        this.stroke = {
-            active: false,
-            color: "#FFFFFF",
-            width: 5
-        }
-        global.actors.push(this)
     }
     draw() {
         if (this.conditions.isDraggable) {
@@ -235,7 +243,7 @@ export class actor {
 
         ctx.save();
         ctx.translate(this.anglex, this.angley);
-        if(this.radius < 0){
+        if (this.radius < 0) {
             this.radius = 0
         }
         ctx.rotate(0.017453292519943295 * this.angle);
@@ -309,6 +317,13 @@ export class actor {
             this.color = "#000000"
         }
     }
+    move(steps) {
+        const angleRad = (this.angle * Math.PI) / 180
+        const deltaX = Math.cos(angleRad) * steps
+        const deltaY = Math.sin(angleRad) * steps
+        this.x += deltaX;
+        this.y += deltaY;
+    }
     grow(x, y) {
         this.x -= x / 2
         this.y -= y / 2
@@ -322,62 +337,79 @@ export class actor {
 }
 export class button {
     constructor(string = "/source/icons/PizzaJS256x.png", [x = 0, y = 0], [width = 64, height = 16], text = "Button", textColor = "#ffffff", textMargin = 0, timeoutMS = 0) {
-        string = string.split(":")
-        this.image = new Image()
-        if (string[0] == "color") {
-            this.usingColor = true
-            this.color = string[1]
+        if (typeof width != "number" || width <= 0 || typeof height != "number" || height <= 0) {
+            global.error("c", 3);
+        }
+        else if (typeof x != "number" || typeof y != "number") {
+            global.error("c", 4);
+        }
+        else if (typeof text != "string" && typeof text != "number") {
+            global.error("c", 6);
+        }
+        else if (typeof textMargin != "number") {
+            global.error("c", 7);
+        }
+        else if (typeof timeoutMS != "number") {
+            global.error("c", 8);
         }
         else {
-            this.usingColor = false
-            this.color = "#000000"
-            this.image.src = loadImage(undefined, string[0])
+            string = string.split(":")
+            this.image = new Image()
+            if (string[0] == "color") {
+                this.usingColor = true
+                this.color = string[1]
+            }
+            else {
+                this.usingColor = false
+                this.color = "#000000"
+                this.image.src = loadImage(undefined, string[0])
+            }
+
+            global.buttons.push(this)
+            if (string[0] == "bypass.img") {
+                this.image.src = "/source/images/bypass.png"
+            }
+
+            this.x = x
+            this.y = y
+            this.width = width
+            this.height = height
+            this.desiredWidth = width - textMargin
+            this.desiredHeight = height - textMargin
+
+            this.hitbox = new hitbox(this, 0, undefined, 0, 0)
+            this.anglex = this.x + this.width / 2
+            this.angley = this.y + this.height / 2
+            this.angle = 0
+
+            this.alpha = 1.0
+
+            this.left = this.x
+            this.right = this.x + this.width
+            this.top = this.y
+            this.bottom = this.y + this.height
+
+            this.hover = false
+            this.click = false
+            this.text = {
+                active: typeof text == "string",
+                text: text,
+                color: textColor,
+                size: fitText(text, this.desiredWidth, this.desiredHeight, "sans-serif"),
+                fontFamily: "sans-serif",
+                baseline: "middle",
+                align: "center",
+                margin: textMargin,
+            }
+            this.timeout = new timeout(timeoutMS)
+
+            this.stroke = {
+                active: false,
+                color: "#FFFFFF",
+                width: 5
+            }
+            this.radius = 0
         }
-
-        global.buttons.push(this)
-        if (string[0] == "bypass.img") {
-            this.image.src = "/source/images/bypass.png"
-        }
-
-        this.x = x
-        this.y = y
-        this.width = width
-        this.height = height
-        this.desiredWidth = width - textMargin
-        this.desiredHeight = height - textMargin
-
-        this.hitbox = new hitbox(this, 0, undefined, 0, 0)
-        this.anglex = this.x + this.width / 2
-        this.angley = this.y + this.height / 2
-        this.angle = 0
-
-        this.alpha = 1.0
-
-        this.left = this.x
-        this.right = this.x + this.width
-        this.top = this.y
-        this.bottom = this.y + this.height
-
-        this.hover = false
-        this.click = false
-        this.text = {
-            active: typeof text == "string",
-            text: text,
-            color: textColor,
-            size: fitText(text, this.desiredWidth, this.desiredHeight, "sans-serif"),
-            fontFamily: "sans-serif",
-            baseline: "middle",
-            align: "center",
-            margin: textMargin,
-        }
-        this.timeout = timeoutMS
-        this.canClickDueTimeout = true
-        this.stroke = {
-            active: false,
-            color: "#FFFFFF",
-            width: 5
-        }
-        this.radius = 0
     }
     change(text, fontFamily) {
         this.text.text = text
@@ -390,13 +422,9 @@ export class button {
         this.pos = [this.x + this.halfwidth, this.y + this.halfheight]
         if (this.hitbox.collidepoint(mouse.pos)) {
             this.hover = true
-            if (mouse.click && mouse.objectSelected == undefined && this.canClickDueTimeout) {
+            if (mouse.click && mouse.objectSelected == undefined && !this.timeout.active) {
                 this.click = true
-                this.canClickDueTimeout = false
-                let timeoutms = setTimeout(() => {
-                    this.canClickDueTimeout = true
-                    clearTimeout(timeoutms)
-                }, this.timeout)
+                this.timeout.start()
             }
             else {
                 this.click = false
@@ -484,7 +512,7 @@ export class rect {
         if (typeof x != "number" || typeof y != "number" ||
             typeof width != "number" || typeof height != "number" ||
             width <= 0 || height <= 0) {
-            global.error(11)
+            global.error("c", 1);
         }
         if (typeof color != "string") {
             this.color = `rgb(${Math.round(Math.random() * 225) + 30},${Math.round(Math.random() * 225) + 30},${Math.round(Math.random() * 225) + 30})`;
@@ -533,98 +561,112 @@ export class rect {
 }
 export class slider {
     constructor(background = "/source/icons/PizzaJS256x.png", thumb = "/source/icons/PizzaJS256x.png", [x = 0, y = 0], [width = 64, height = 16], thumbwidth = 16, [minpercentage = 0, maxpercentage = 100], sliderFill = "#00FF00", currentpercentage = 0) {
-        this.thumb = {
-            image: undefined,
-            x: x,
-            y: y,
-            height: height,
-            width: 0, // Defined later on code
-            blocked: false,
-            usingColor: false,
-            color: "#000000",
-            radius: 0,
-            stroke: {
+        if (typeof width != "number" || width <= 0 || typeof height != "number" || height <= 0) {
+            global.error("c", 3);
+        }
+        else if (typeof thumbwidth != "number" || thumbwidth <= 0) {
+            global.error("c", 9);
+        }
+        else if (typeof minpercentage != "number" || typeof maxpercentage != "number" || typeof currentpercentage != "number") {
+            global.error("c", 10);
+        }
+        else if (currentpercentage < minpercentage || currentpercentage > maxpercentage) {
+            global.error("c", 11);
+        }
+        else {
+            this.thumb = {
+                image: undefined,
+                x: x,
+                y: y,
+                height: height,
+                width: 0, // Defined later on code
+                blocked: false,
+                usingColor: false,
+                color: "#000000",
+                radius: 0,
+                stroke: {
+                    active: false,
+                    color: "#FFFFFF",
+                    width: 5
+                }
+            }
+            var image1 = background.split(":")
+            this.background = new Image()
+            if (image1[0] == "color") {
+                this.usingColor1 = true
+                this.color1 = image1[1]
+            }
+            else {
+                this.usingColor1 = false
+                this.color1 = "#000000"
+                this.background.src = loadImage(undefined, image1[0])
+            }
+
+            var image2 = thumb.split(":")
+            this.thumb.image = new Image()
+            if (image2[0] == "color") {
+                this.thumb.usingColor = true
+                this.thumb.color = image2[1]
+            }
+            else {
+                this.thumb.image.src = loadImage(undefined, image2[0])
+            }
+            this.maxpercentage = maxpercentage
+            this.minpercentage = minpercentage
+            this.percentage = currentpercentage
+
+            if (thumbwidth > width / 2) {
+                thumbwidth = height
+                this.width = thumbwidth
+                this.thumb.width = width - thumbwidth
+            }
+            else {
+                this.width = thumbwidth
+                this.thumb.width = width - thumbwidth
+            }
+            this.height = height
+
+
+            if (this.percentage < this.minpercentage) {
+                this.percentage = this.minpercentage
+            }
+            if (this.percentage > this.maxpercentage) {
+                this.percentage = this.maxpercentage
+            }
+            this.x = this.thumb.x + ((this.percentage - this.minpercentage) * this.thumb.width / (this.maxpercentage - this.minpercentage)) + this.width;
+            this.y = y
+
+            this.drag = {
+                hitbox: new hitbox(this, 0, undefined, -this.width, 0),
+                active: false,
+                hasSetOffset: false,
+                offsetX: 0,
+                offsetY: 0,
+            }
+
+            this.hitbox = new hitbox(this, 0, undefined, -this.width, 0)
+            this.anglex = this.x + this.width / 2
+            this.angley = this.y + this.height / 2
+            this.angle = 0
+
+            this.alpha = 1
+
+            this.left = this.x
+            this.right = this.x + this.width
+            this.top = this.y
+            this.bottom = this.y + this.height
+
+            this.hover = false
+            this.click = false
+
+            this.sliderBgColor = sliderFill
+
+            this.radius = 0
+            this.stroke = {
                 active: false,
                 color: "#FFFFFF",
                 width: 5
             }
-        }
-        var image1 = background.split(":")
-        this.background = new Image()
-        if (image1[0] == "color") {
-            this.usingColor1 = true
-            this.color1 = image1[1]
-        }
-        else {
-            this.usingColor1 = false
-            this.color1 = "#000000"
-            this.background.src = loadImage(undefined, image1[0])
-        }
-
-        var image2 = thumb.split(":")
-        this.thumb.image = new Image()
-        if (image2[0] == "color") {
-            this.thumb.usingColor = true
-            this.thumb.color = image2[1]
-        }
-        else {
-            this.thumb.image.src = loadImage(undefined, image2[0])
-        }
-        this.maxpercentage = maxpercentage
-        this.minpercentage = minpercentage
-        this.percentage = currentpercentage
-
-        if (thumbwidth > width / 2) {
-            thumbwidth = height
-            this.width = thumbwidth
-            this.thumb.width = width - thumbwidth
-        }
-        else {
-            this.width = thumbwidth
-            this.thumb.width = width - thumbwidth
-        }
-        this.height = height
-
-
-        if (this.percentage < this.minpercentage) {
-            this.percentage = this.minpercentage
-        }
-        if (this.percentage > this.maxpercentage) {
-            this.percentage = this.maxpercentage
-        }
-        this.x = this.thumb.x + ((this.percentage - this.minpercentage) * this.thumb.width / (this.maxpercentage - this.minpercentage)) + this.width;
-        this.y = y
-
-        this.drag = {
-            hitbox: new hitbox(this, 0, undefined, -this.width, 0),
-            active: false,
-            hasSetOffset: false,
-            offsetX: 0,
-            offsetY: 0,
-        }
-
-        this.hitbox = new hitbox(this, 0, undefined, -this.width, 0)
-        this.anglex = this.x + this.width / 2
-        this.angley = this.y + this.height / 2
-        this.angle = 0
-
-        this.alpha = 1
-
-        this.left = this.x
-        this.right = this.x + this.width
-        this.top = this.y
-        this.bottom = this.y + this.height
-
-        this.hover = false
-        this.click = false
-
-        this.sliderBgColor = sliderFill
-
-        this.radius = 0
-        this.stroke = {
-            active: false,
-            color: "#FFFFFF",
-            width: 5
         }
     }
     draw() {
@@ -775,27 +817,70 @@ export class slider {
             this.color2 = "#000000"
         }
     }
+}
+export class timeout {
+    constructor(timeMS = 1000) {
+        if (typeof timeMS !== "number") {
+            global.error("c", 8);
+        } else {
+            this.time = timeMS;
+            this.active = false;
+            this.currentTime = 0;
+            this.timeElapsed = 0;
+        }
+    }
+    start() {
+        if (!this.active) {
+            this.active = true;
+            this.currentTime = Date.now();
+            const timeout = setTimeout(() => {
+                this.active = false;
+                this.currentTime = 0;
+                this.timeElapsed = 0;
+                clearTimeout(timeout);
+            }, this.time);
 
+            // Update time elapsed every 100 milliseconds
+            const updateInterval = 70;
+            const updateTimeout = () => {
+                if (this.active) {
+                    this.timeElapsed = Date.now() - this.currentTime;
+                    setTimeout(updateTimeout, updateInterval);
+                }
+            };
+            updateTimeout();
+        }
+    }
 }
 export class sound {
     constructor(url, playbackRate = 1.0, volume = 1.0, loop = false) {
-        this.sound = new Audio()
-        this.sound.src = loadSound(url)
-        this.sound.loop = loop
-        this.loop = loop
-        this.playbackRate = playbackRate
-        this.volume = volume
-        this.ended = this.sound.ended
-        this.duration = this.sound.duration
-        this.currentTime = this.sound.currentTime
-        this.paused = this.sound.paused
-
-        this.sound.addEventListener('ended', () => {
-            this.ended = true;
-        });
-        this.sound.addEventListener('timeupdate', () => {
-            this.currentTime = this.sound.currentTime;
-        });
+        if (typeof playbackRate != "number") {
+            global.error("c", 12);
+        }
+        else if (typeof volume != "number" || volume < 0 || volume > 1) {
+            global.error("c", 13);
+        }
+        else if (typeof loop != "boolean") {
+            global.error("c", 14);
+        }
+        else {
+            this.sound = new Audio()
+            this.sound.src = loadSound(url)
+            this.sound.loop = loop
+            this.loop = loop
+            this.playbackRate = playbackRate
+            this.volume = volume
+            this.ended = this.sound.ended
+            this.duration = this.sound.duration
+            this.currentTime = this.sound.currentTime
+            this.paused = this.sound.paused
+            this.sound.addEventListener('ended', () => {
+                this.ended = true;
+            });
+            this.sound.addEventListener('timeupdate', () => {
+                this.currentTime = this.sound.currentTime;
+            });
+        }
     }
     play() {
         this.ended = false
@@ -808,15 +893,18 @@ export class sound {
         this.sound.pause()
     }
     stop() {
-        this.sound.currentTime = 0
         if (!this.sound.paused) {
             this.sound.pause()
         }
+        this.sound.currentTime = 0
     }
     setCurrentTime(seconds) {
         if (seconds >= 0 && seconds <= this.sound.duration) {
             this.currentTime = seconds;
             this.sound.currentTime = seconds;
+        }
+        else {
+            global.error("c", 15);
         }
     }
 } 
