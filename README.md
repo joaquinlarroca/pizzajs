@@ -1,5 +1,6 @@
 
-# ![Logo](/source/icons/favicon32x.png) PizzaJS
+# ![Logo](/source/icons/favicon32x.png) PizzaJS [![pages-build-deployment](https://github.com/joaquinlarroca/pizzajs/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/joaquinlarroca/pizzajs/actions/workflows/pages/pages-build-deployment) ![GitHub License](https://img.shields.io/github/license/joaquinlarroca/pizzajs) ![GitHub Release](https://img.shields.io/github/v/release/joaquinlarroca/pizzajs)
+
 
 ## Getting Started
 To start using PizzaJS in your project, follow these steps:
