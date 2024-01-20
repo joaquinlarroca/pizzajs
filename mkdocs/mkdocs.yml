@@ -20,6 +20,7 @@ nav:
   - Listeners: listeners/listeners.md
   - Addons:
     - MiniMontior: addons/miniMonitor.md
+    - MouseInfo: addons/mouseInfo.md
     - DefaultScreenshot: addons/DefaultScreenshot.md
     - Particle: addons/particle.md
 theme: 

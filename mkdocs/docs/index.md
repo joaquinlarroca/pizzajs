@@ -89,6 +89,19 @@ initLoaderCheck()
     Output: `1920`
 
 
+## Events
+
+### pjsUpdate
+- `Trigger:` This event is triggered after the start() function is called. And calls itself each frame
+- `Purpose:` It indicates update or initialization process has taken place.
+
+### pjsAfterUpdate
+- `Trigger:` This event occurs after the pjsUpdate event.
+- `Purpose:` Made for drawing on top of what is drawn on `pjsUpdate` generally used for Addons.
+
+### pjsAfterClear
+- `Trigger:` This event is triggered after calling the clear() function.
+- `Purpose:` Made for drawing before `pjsUpdate` generally used for Addons.
 
 ## How to use color code format
 

@@ -6,7 +6,7 @@ export let mouse = {
     y: 0,
     pos: [0, 0],
     click: false,
-    objectSelected: null,
+    objectSelected: undefined,
 };
 
 export const pressedKeys = new Set();

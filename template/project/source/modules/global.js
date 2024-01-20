@@ -43,7 +43,7 @@ export const errors_listeners = {
 
 export const image = {}
 export let global = {
-    version: "v1.1",
+    version: "v1.4",
     build: "Beta",
     debug: false,
     actors: [],

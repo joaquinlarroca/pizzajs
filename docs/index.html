@@ -412,6 +412,48 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#events" class="md-nav__link">
+    <span class="md-ellipsis">
+      Events
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pjsupdate" class="md-nav__link">
+    <span class="md-ellipsis">
+      pjsUpdate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pjsafterupdate" class="md-nav__link">
+    <span class="md-ellipsis">
+      pjsAfterUpdate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pjsafterclear" class="md-nav__link">
+    <span class="md-ellipsis">
+      pjsAfterClear
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#how-to-use-color-code-format" class="md-nav__link">
     <span class="md-ellipsis">
       How to use color code format
@@ -850,6 +892,27 @@
   
   
     <li class="md-nav__item">
+      <a href="addons/mouseInfo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MouseInfo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="addons/DefaultScreenshot/" class="md-nav__link">
         
   
@@ -933,6 +996,48 @@
       Global object
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#events" class="md-nav__link">
+    <span class="md-ellipsis">
+      Events
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pjsupdate" class="md-nav__link">
+    <span class="md-ellipsis">
+      pjsUpdate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pjsafterupdate" class="md-nav__link">
+    <span class="md-ellipsis">
+      pjsAfterUpdate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pjsafterclear" class="md-nav__link">
+    <span class="md-ellipsis">
+      pjsAfterClear
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1148,6 +1253,22 @@
 </code></pre></div></td></tr></table></div>
 <p>Output: <code>1920</code></p>
 </div>
+<h2 id="events">Events</h2>
+<h3 id="pjsupdate">pjsUpdate</h3>
+<ul>
+<li><code>Trigger:</code> This event is triggered after the start() function is called. And calls itself each frame</li>
+<li><code>Purpose:</code> It indicates update or initialization process has taken place.</li>
+</ul>
+<h3 id="pjsafterupdate">pjsAfterUpdate</h3>
+<ul>
+<li><code>Trigger:</code> This event occurs after the pjsUpdate event.</li>
+<li><code>Purpose:</code> Made for drawing on top of what is drawn on <code>pjsUpdate</code> generally used for Addons.</li>
+</ul>
+<h3 id="pjsafterclear">pjsAfterClear</h3>
+<ul>
+<li><code>Trigger:</code> This event is triggered after calling the clear() function.</li>
+<li><code>Purpose:</code> Made for drawing before <code>pjsUpdate</code> generally used for Addons.</li>
+</ul>
 <h2 id="how-to-use-color-code-format">How to use color code format</h2>
 <p>On classes instead of putting an image, color can by used by simply adding <code>color:</code> before the color wether is on hex, rgb, rgba, etc.</p>
 <div class="admonition example">

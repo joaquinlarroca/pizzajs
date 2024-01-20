@@ -82,7 +82,7 @@ export function drawtext(text = "undefined", [x = 0, y = 0], fontSize = 24, font
     ctx.restore();
 }
 export function measureTextWidth(text, fontSize, fontFamily) {
-    if (typeof text != "string" && typeof text != "number") {
+    if (typeof text != "string" && typeof text != "number" && typeof text != "boolean") {
         global.error("f", 9)
         return 16
     }
@@ -101,7 +101,7 @@ export function measureTextWidth(text, fontSize, fontFamily) {
     }
 }
 export function fitText(text, width, height, fontFamily) {
-    if (typeof text != "string" && typeof text != "number") {
+    if (typeof text != "string" && typeof text != "number" && typeof text != "boolean") {
         global.error("f", 9)
         return 16
     }
@@ -247,6 +247,7 @@ export function start() {
             global.deltaTime = (currentTimestamp - timestamp) / 1000;
             timestamp = currentTimestamp;
             notifyUpdate(global.deltaTime, Math.round(1 / global.deltaTime));
+            
             requestAnimationFrame(animate);
         }
         requestAnimationFrame(animate);
@@ -260,6 +261,7 @@ export function start() {
  */
 export function notifyUpdate(deltaTime, fps) {
     window.dispatchEvent(new CustomEvent('pjsUpdate', { detail: { deltaTime, fps } }));
+    window.dispatchEvent(new Event('pjsAfterUpdate'));
 }
 
 export const canvas = document.createElement('canvas');
