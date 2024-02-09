@@ -95,6 +95,7 @@ export function measureTextWidth(text, fontSize, fontFamily) {
         return 16
     }
     else {
+        text = text.toString()
         ctx.font = `${fontSize}px ${fontFamily}`;
         const textMetrics = ctx.measureText(text);
         return textMetrics.width;
@@ -267,7 +268,7 @@ export function notifyUpdate(deltaTime, fps) {
 export const canvas = document.createElement('canvas');
 export const ctx = canvas.getContext('2d');
 canvas.id = "pjsCanvas";
-canvas.style.backgroundColor = "#1a1a1a";
+canvas.style.display = "initial"
 /**
  * Sets up the canvas with specified width, height, and other config.
  * 

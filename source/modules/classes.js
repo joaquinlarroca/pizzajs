@@ -152,7 +152,7 @@ export class actor {
 
             this.halfwidth = this.width / 2
             this.halfheight = this.height / 2
-
+            this.scale = [1,1]
             this.drag = {
                 hitbox: new hitbox(this, 0, undefined, this.offsetX, this.offsetY),
                 active: false,
@@ -247,6 +247,7 @@ export class actor {
             this.radius = 0
         }
         ctx.rotate(0.017453292519943295 * this.angle);
+        ctx.scale(this.scale[0], this.scale[1]);
         ctx.globalAlpha = this.alpha;
         if (this.usingColor) {
             ctx.fillStyle = this.color
@@ -263,7 +264,7 @@ export class actor {
         else {
             ctx.fillStyle = "rgba(0,0,0,0)"
             ctx.beginPath();
-            ctx.roundRect(-this.halfwidth, -this.halfheight, this.width, this.height, this.radius);
+            ctx.roundRect(-this.halfwidth + this.offsetX, -this.halfheight + this.offsetY, this.width, this.height, this.radius);
             if (this.stroke.active) {
                 ctx.strokeStyle = this.stroke.color;
                 ctx.lineWidth = this.stroke.width;
@@ -299,7 +300,9 @@ export class actor {
         ctx.restore();
     }
     angletopoint(point) {
-        this.angle = Math.atan2(point[1] - this.y + this.height / 2, point[0] - this.x + this.width / 2) * (180 / Math.PI)
+        this.halfwidth = this.width / 2
+        this.halfheight = this.height / 2
+        this.angle = Math.atan2(point[1] - this.y + this.halfheight, point[0] - this.x + this.halfwidth) * (180 / Math.PI)
     }
     changeImage(string) {
         string = string.split(":")
@@ -323,6 +326,15 @@ export class actor {
         const deltaY = Math.sin(angleRad) * steps
         this.x += deltaX;
         this.y += deltaY;
+    }
+    flip(axis) {
+        if (axis === 'horizontal' || axis == "h" || axis == "x") {
+            this.scale[0] *= -1; // Flip horizontally
+        } else if (axis === 'vertical' || axis == "v" || axis == "y") {
+            this.scale[1] *= -1; // Flip vertically
+        } else {
+            global.error("c", 16);
+        }
     }
     grow(x, y) {
         this.x -= x / 2
@@ -400,6 +412,11 @@ export class button {
                 baseline: "middle",
                 align: "center",
                 margin: textMargin,
+                stroke: {
+                    active: false,
+                    color: "#FFFFFF",
+                    width: 5
+                }
             }
             this.timeout = new timeout(timeoutMS)
 
@@ -475,10 +492,20 @@ export class button {
         }
         ctx.restore();
         if (this.text.active) {
-            ctx.fillStyle = this.text.color
+            ctx.fillStyle = this.text.color;
+            ctx.beginPath();
+            ctx.textBaseline = this.text.baseline;
+            ctx.textAlign = this.text.align;
+            ctx.font = `${this.text.size}px ${this.text.fontFamily}`;
             drawtext(this.text.text, [this.pos[0], this.pos[1]], this.text.size, this.text.fontFamily, this.text.baseline, this.text.align, this.angle, this.alpha)
+            if (this.text.stroke.active) {
+                ctx.strokeStyle = this.text.stroke.color;
+                ctx.lineWidth = this.text.stroke.width;
+                ctx.strokeText(this.text.text, this.pos[0], this.pos[1]);
+            }
+            ctx.closePath();
+            ctx.fill();
         }
-        ctx.fillStyle = "#000000"
     }
     changeImage(string) {
         string = string.split(":")

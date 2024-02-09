@@ -65,10 +65,12 @@ export function setupMouseListener() {
                 mouse.pos = [Math.round(scaledX), Math.round(scaledY)];
             }
         });
+        window.addEventListener('contextmenu', (event) => {
+            event.preventDefault()
+        });
 
         window.addEventListener("pointerdown", (event) => {
             if (canvas) {
-                event.preventDefault();
                 mouse.click = true;
             }
         });

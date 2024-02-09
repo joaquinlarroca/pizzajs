@@ -22,6 +22,7 @@
 | `halfwidth, halfheight`   | Half of the width and height of the actor.                        |
 | `pos`                     | Position coordinates of the actor.                                |
 | `anglex, angley`          | Position coordinates used for angle calculations.                 |
+| `scale`          | A two element array that determine its scaling on x for the first element and on y for the second.               |
 | `angle`                   | Angle of rotation for the actor (in degrees).                     |
 | `alpha`                   | Transparency of the actor.                                        |
 | `radius`                  | The amount of rounding corners use array for changing independently each corner or a number to change all corners.                    |
@@ -113,6 +114,19 @@ If the number of steps is positive, the sprite will move forward in the directio
 | Parameters          | Type      | Description                                       | Default Value  |
 |---------------------|-----------|---------------------------------------------------|----------------|
 | steps               | `number`  | Amount of pixels to move                          | -              |
+
+### `flip(axis)`
+
+Flips the actor on a specified axis.
+!!! note
+    Use this as the values for axis horizontal, h, x, vertical, v or y.
+
+Valid axis: horizontal, h, x, vertical, v or y.
+
+| Parameters          | Type      | Description                                       | Default Value  |
+|---------------------|-----------|---------------------------------------------------|----------------|
+| axis               | `string`| The axis to flip the actor from                              | -              |
+
 
 ### `grow(x, y)`
 

@@ -23,6 +23,7 @@ nav:
     - MouseInfo: addons/mouseInfo.md
     - DefaultScreenshot: addons/DefaultScreenshot.md
     - Particle: addons/particle.md
+    - LocalStorage: addons/localstorage.md
 theme: 
   favicon: img/PizzaJSx256C.png
   icon:
@@ -55,6 +56,14 @@ theme:
     - navigation.instant.progress
     - navigation.tracking
     - navigation.tabs
+extra:
+  social:
+    - icon: fontawesome/brands/discord 
+      link: https://discord.gg/BmNS5aBEPT
+      name: pizzajs discord
+    - icon: fontawesome/brands/github 
+      link: https://github.com/joaquinlarroca
+      name: joaquinlarroca
 
 markdown_extensions: 
   - pymdownx.highlight:

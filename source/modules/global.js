@@ -30,7 +30,8 @@ export const errors_classes = {
     12: "Playback Rate must be a number.",
     13: "Volume must be a number between 0 and 1.",
     14: "Loop can only be a boolean.",
-    15: "Seconds specified must be between 0 and the audio duration."
+    15: "Seconds specified must be between 0 and the audio duration.",
+    16: "Invalid axis. Valid axis: horizontal, h, x, vertical, v or y."
 };
 export const errors_listeners = {
     0: "Test ID",
