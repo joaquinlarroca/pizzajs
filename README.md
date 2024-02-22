@@ -45,13 +45,13 @@ import * as pjs from "./source/modules/index.js"
 ```js
 // Use PizzaJS without a prefix
 // Import global
-import { global, image } from './global.js'
+import { global, image } from './source/modules/global.js'
 // Import functions
-import { initLoaderCheck, canvas, ctx, drawtext, loadImage, loadSound, loadFont, fillRect, setup, start, clear, fitText, measureTextWidth, shakeScreen } from './functions.js';
+import { initLoaderCheck, canvas, ctx, drawtext, loadImage, loadSound, loadFont, fillRect, setup, start, clear, fitText, measureTextWidth, shakeScreen } from './source/modules/functions.js';
 // Import listeners
-import { setupAllEventListeners, setupMouseListener, setupResizeListener, setupKeyboardListener, keyPressed, mouse, pressedKeys } from './listener.js';
+import { setupAllEventListeners, setupMouseListener, setupResizeListener, setupKeyboardListener, keyPressed, mouse, pressedKeys } from './source/modules/listener.js';
 // Import all classes
-import { actor, button, hitbox, hitbox2, rect, sound, slider, timeout } from './classes.js';
+import { actor, button, hitbox, hitbox2, rect, sound, slider, timeout } from './source/modules/classes.js';
 // Starts the loadCheck
 initLoaderCheck()
 ```
