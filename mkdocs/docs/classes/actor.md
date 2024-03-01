@@ -1,7 +1,7 @@
 
 | Parameters          | Type      | Description                                       | Default Value  |
 |---------------------|-----------|---------------------------------------------------|----------------|
-| string              | `string`  | Image URL or color code format.                   | PizzaJS Logo   |
+| string              | `string`  | Image URL or color code format.                   | "color: #FFFFFF"   |
 | [x, y]              | `number[]`| The top left position of the actor in pixels.     | [0, 0]         |
 | [width, height]     | `number[]`| The width and height of the actor in pixels.      | [32, 32]       |
 | [offsetX, offsetY]  | `number[]`| The offsets used for positioning the actor.       | [0, 0]         |
@@ -14,6 +14,7 @@
 | `usingColor`              | Indicates whether the actor is using a color instead of an image. |
 | `color`                   | Holds the color value if the actor is using a color.              |
 | `conditions`              | Object holding various conditions for the actor.                  |
+| `scale`                   | The scale of the actor in x and y.                                |
 | `x, y`                    | Current position of the actor.                                    |
 | `offsetX, offsetY`        | Offsets used for positioning.                                     |
 | `drag`                    | Object for handling dragging functionality.                       |
@@ -30,7 +31,6 @@
 | `stroke.color`           |  A string representing the color of the stroke in hexadecimal, RGB, or other supported formats.  |
 | `stroke.width`           |  A numerical value representing the width of the stroke in pixels.  |
 |`left, right, top, bottom` | Boundaries of the actor.                                          |
-| `global.actors`           | Adds the object to global.actors for addons                       |
 
 ## Methods
 

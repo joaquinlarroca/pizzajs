@@ -5,11 +5,11 @@ pjs.loadFont("FiraCode", "/source/fonts/FiraCode/FiraCode-Regular.ttf")
 let a = new pjs.actor("color: #000000", [200, 114], [32, 32], [0, 0])
 let b = new pjs.actor(undefined, [32, 114], [50, 50], [0, 0])
 
-let c = new pjs.button("color: rgba(0,0,0,0.5)", [26, 32], [128, 50], "Click", "#FFFFFF", 25, 1000)
+let c = new pjs.button("color: rgba(0,0,0,0.5)", [26, 32], [128, 50], "Click", "FiraCode", "#FFFFFF", 25, 1000)
 
 let d = new pjs.slider("color: rgba(0,0,0,0.5)", "color: rgb(122.5,122.5,122.5)", [186, 32], [128, 50], 15, [-75, 75], "#FFFFFF", 0)
 
-let e = new pjs.button("color: rgba(0,0,0,0.5)", [346, 32], [128, 50], "0", "#FFFFFF", 25, 10)
+let e = new pjs.button("color: rgba(0,0,0,0.5)", [346, 32], [128, 50], "0", "FiraCode", "#FFFFFF", 25, 10)
 
 c.stroke.active = true
 c.stroke.width = 2
@@ -47,17 +47,17 @@ window.addEventListener("pjsUpdate", (info) => {
         pjs.shakeScreen(2, 20)
     }
 
-    e.change("   " + d.percentage + "   ", "FiraCode")
+    e.setText("   " + d.percentage + "   ", "FiraCode")
 
     if (!c.timeout.active) {
         c.text.color = "#FFFFFF"
         c.stroke.color = "#FFFFFF"
-        c.change("Click", "FiraCode")
+        c.setText("Click", "FiraCode")
     }
     else {
         c.text.color = "#FF0000"
         c.stroke.color = "#FF0000"
-        c.change(Math.round(c.timeout.timeElapsed / 10) / 100, "FiraCode")
+        c.setText(Math.round(c.timeout.timeLeft / 10) / 100, "FiraCode")
     }
     if (c.click) {
         if (a.color == "#FFFFFF") {

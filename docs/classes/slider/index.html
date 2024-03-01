@@ -585,6 +585,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../hitboxCircle/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HitboxCircle
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../button/" class="md-nav__link">
         
   
@@ -1022,13 +1043,13 @@
 <td>background</td>
 <td><code>string</code></td>
 <td>Image URL or color code representing the background of the slider.</td>
-<td>PizzaJS Logo</td>
+<td>"color: #FF0000"</td>
 </tr>
 <tr>
 <td>thumb</td>
 <td><code>string</code></td>
 <td>Image URL or color code representing the thumb.</td>
-<td>PizzaJS Logo</td>
+<td>"color: #aeaeae"</td>
 </tr>
 <tr>
 <td>[x, y]</td>
@@ -1058,7 +1079,7 @@
 <td>sliderFill</td>
 <td><code>string</code></td>
 <td>Color code representing the fill color of the slider.</td>
-<td>#00FF00</td>
+<td>"#00FF00"</td>
 </tr>
 <tr>
 <td>currentPercentage</td>
@@ -1081,11 +1102,11 @@
 <td>Holds the background image.</td>
 </tr>
 <tr>
-<td><code>usingColor1</code></td>
+<td><code>BGusingColor</code></td>
 <td>Indicates whether is using a color instead of an image in background.</td>
 </tr>
 <tr>
-<td><code>color1</code></td>
+<td><code>BGcolor</code></td>
 <td>Holds the color value of the slider background if is using a color.</td>
 </tr>
 <tr>
@@ -1101,10 +1122,6 @@
 <td>Holds the color value of the slider thumb if is using a color.</td>
 </tr>
 <tr>
-<td><code>x, y</code></td>
-<td>Current position of the slider.</td>
-</tr>
-<tr>
 <td><code>thumb.x, thumb.y</code></td>
 <td>Current position of the thumb.</td>
 </tr>
@@ -1115,6 +1132,30 @@
 <tr>
 <td><code>thumb.width</code></td>
 <td>Width of the thumb</td>
+</tr>
+<tr>
+<td><code>thumb.stroke.active</code></td>
+<td>A boolean flag indicating whether the stroke (outline) should be active or not.</td>
+</tr>
+<tr>
+<td><code>thumb.stroke.color</code></td>
+<td>A string representing the color of the stroke in hexadecimal, RGB, or other supported formats.</td>
+</tr>
+<tr>
+<td><code>thumb.stroke.width</code></td>
+<td>A numerical value representing the width of the stroke in pixels.</td>
+</tr>
+<tr>
+<td><code>thumb.blocked</code></td>
+<td>Boolean that blocks movement if its true</td>
+</tr>
+<tr>
+<td><code>thumb.radius</code></td>
+<td>The amount of rounding corners use array for changing independently each corner or a number to change all corners.</td>
+</tr>
+<tr>
+<td><code>x, y</code></td>
+<td>Current position of the slider.</td>
 </tr>
 <tr>
 <td><code>maxpercentage</code></td>
@@ -1173,22 +1214,6 @@
 <td>A numerical value representing the width of the stroke in pixels.</td>
 </tr>
 <tr>
-<td><code>thumb.radius</code></td>
-<td>The amount of rounding corners use array for changing independently each corner or a number to change all corners.</td>
-</tr>
-<tr>
-<td><code>thumb.stroke.active</code></td>
-<td>A boolean flag indicating whether the stroke (outline) should be active or not.</td>
-</tr>
-<tr>
-<td><code>thumb.stroke.color</code></td>
-<td>A string representing the color of the stroke in hexadecimal, RGB, or other supported formats.</td>
-</tr>
-<tr>
-<td><code>thumb.stroke.width</code></td>
-<td>A numerical value representing the width of the stroke in pixels.</td>
-</tr>
-<tr>
 <td><code>left, right, top, bottom</code></td>
 <td>Boundaries of the actor.</td>
 </tr>
@@ -1199,10 +1224,6 @@
 <tr>
 <td><code>hover</code></td>
 <td>Boolean that indicates if the thumb is being hovered.</td>
-</tr>
-<tr>
-<td><code>thumb.blocked</code></td>
-<td>Boolean that blocks movement if its true</td>
 </tr>
 </tbody>
 </table>

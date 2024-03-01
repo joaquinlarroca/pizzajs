@@ -8,7 +8,7 @@ export const errors_functions = {
     6: "Intensity is invalid or less than 0.",
     7: "Duration is invalid or less than 0.",
     8: "Setup width or height must be a number or more than 0.",
-    9: "Text is neither a string nor a number.",
+    9: "The text is not a string, number, or boolean value.",
     10: "Invalid Font.",
     11: "Width or height must be a number greater than 0.",
     12: "Font size must be a number greater than 0."
@@ -31,7 +31,8 @@ export const errors_classes = {
     13: "Volume must be a number between 0 and 1.",
     14: "Loop can only be a boolean.",
     15: "Seconds specified must be between 0 and the audio duration.",
-    16: "Invalid axis. Valid axis: horizontal, h, x, vertical, v or y."
+    16: "Invalid axis. Valid axis: horizontal, h, x, vertical, v or y.",
+    17: "Radius must be a number greater than 0."
 };
 export const errors_listeners = {
     0: "Test ID",
@@ -44,11 +45,15 @@ export const errors_listeners = {
 
 export const image = {}
 export let global = {
-    version: "v1.5",
+    version: "v1.6",
     build: "Beta",
     debug: false,
+    all: [],
     actors: [],
     buttons: [],
+    sliders: [],
+    rects: [],
+    sounds: [],
     hasLoaded: false,
     toLoad: 0,
     Loaded: 0,

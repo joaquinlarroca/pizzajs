@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../../listeners/listeners/">
+        <link rel="prev" href="../hitbox2/">
       
       
-        <link rel="next" href="../mouseInfo/">
+        <link rel="next" href="../button/">
       
       
       <link rel="icon" href="../../img/PizzaJSx256C.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>MiniMontior - PizzaJS</title>
+        <title>HitboxCircle - PizzaJS</title>
       
     
     
@@ -71,6 +71,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#attributes" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -101,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              MiniMontior
+              HitboxCircle
             
           </span>
         </div>
@@ -241,11 +246,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../classes/actor/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../actor/" class="md-tabs__link">
           
   
   Classes
@@ -276,13 +283,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../addons/miniMonitor/" class="md-tabs__link">
           
   
   Addons
@@ -472,8 +477,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -482,12 +489,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -501,7 +508,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Classes
@@ -515,7 +522,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../classes/actor/" class="md-nav__link">
+      <a href="../actor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -536,7 +543,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../classes/hitbox/" class="md-nav__link">
+      <a href="../hitbox/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -557,7 +564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../classes/hitbox2/" class="md-nav__link">
+      <a href="../hitbox2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -575,10 +582,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../classes/hitboxCircle/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    HitboxCircle
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -587,6 +612,93 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Attributes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#draw" class="md-nav__link">
+    <span class="md-ellipsis">
+      draw()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collidehitbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      collide(hitbox)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collide2hitbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      collide2(hitbox)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collidecirclehitbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      collideCircle(hitbox)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collidepointpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      collidepoint(point)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -599,7 +711,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../classes/button/" class="md-nav__link">
+      <a href="../button/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -620,7 +732,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../classes/rect/" class="md-nav__link">
+      <a href="../rect/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -641,7 +753,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../classes/slider/" class="md-nav__link">
+      <a href="../slider/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -662,7 +774,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../classes/timeout/" class="md-nav__link">
+      <a href="../timeout/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -683,7 +795,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../classes/sound/" class="md-nav__link">
+      <a href="../sound/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -728,8 +840,6 @@
       
   
   
-    
-  
   
   
     
@@ -740,12 +850,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
@@ -759,7 +869,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Addons
@@ -770,17 +880,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../addons/miniMonitor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -789,7 +892,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -802,7 +904,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../mouseInfo/" class="md-nav__link">
+      <a href="../../addons/mouseInfo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -823,7 +925,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../DefaultScreenshot/" class="md-nav__link">
+      <a href="../../addons/DefaultScreenshot/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -844,7 +946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../particle/" class="md-nav__link">
+      <a href="../../addons/particle/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -865,7 +967,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../localstorage/" class="md-nav__link">
+      <a href="../../addons/localstorage/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -904,6 +1006,83 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Attributes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#draw" class="md-nav__link">
+    <span class="md-ellipsis">
+      draw()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collidehitbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      collide(hitbox)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collide2hitbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      collide2(hitbox)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collidecirclehitbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      collideCircle(hitbox)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collidepointpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      collidepoint(point)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -920,12 +1099,156 @@
   
 
 
-  <h1>MiniMontior</h1>
+  <h1>HitboxCircle</h1>
 
-<p>An overlay that draws using <code>pjsAfterUpdate</code>. Shows fps and deltaTime
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">import</span><span class="w"> </span><span class="s2">&quot;./source/Addons/miniMonitor.js&quot;</span>
-</code></pre></div></td></tr></table></div>
-<img alt="Image" src="../img/miniMonitor.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x</td>
+<td><code>number</code></td>
+<td>The center of the circle in the x-axis</td>
+<td>-</td>
+</tr>
+<tr>
+<td>y</td>
+<td><code>number</code></td>
+<td>The center of the circle in the y-axis</td>
+<td>-</td>
+</tr>
+<tr>
+<td>radius</td>
+<td><code>number</code></td>
+<td>The radius of the circle</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Color is randomized, but can be changed.</p>
+</div>
+<h2 id="attributes">Attributes</h2>
+<table>
+<thead>
+<tr>
+<th>Attributes</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td>The x position for the circle.</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td>The y position for the circle.</td>
+</tr>
+<tr>
+<td><code>radius</code></td>
+<td>The radius of the circle.</td>
+</tr>
+<tr>
+<td><code>color</code></td>
+<td>The color of the hitbox.</td>
+</tr>
+<tr>
+<td><code>lineWidth</code></td>
+<td>The width of the stroke for drawing the hitbox.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="methods">Methods</h2>
+<h3 id="draw"><code>draw()</code></h3>
+<p>Renders the hitbox onto the canvas.</p>
+<h3 id="collidehitbox"><code>collide(hitbox)</code></h3>
+<p>Checks collision between two hitboxes(hitboxCircle and hitbox). If they are colliding returns <code>true</code> else returns <code>false</code></p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hitbox</td>
+<td><code>object</code></td>
+<td>The hitbox object</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="collide2hitbox"><code>collide2(hitbox)</code></h3>
+<p>Checks collision between hitboxCircle and hitbox 2. </p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hitbox</td>
+<td><code>object</code></td>
+<td>The hitbox2 object</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="collidecirclehitbox"><code>collideCircle(hitbox)</code></h3>
+<p>Checks collision between two hitboxCircle. </p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hitbox</td>
+<td><code>object</code></td>
+<td>The hitboxCircle object</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="collidepointpoint"><code>collidepoint(point)</code></h3>
+<p>Checks collision with a single point. </p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>point</td>
+<td><code>number[]</code></td>
+<td>An array containing x and y of the point</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
 
 
 

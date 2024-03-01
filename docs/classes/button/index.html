@@ -9,7 +9,7 @@
       
       
       
-        <link rel="prev" href="../hitbox2/">
+        <link rel="prev" href="../hitboxCircle/">
       
       
         <link rel="next" href="../rect/">
@@ -582,6 +582,27 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../hitboxCircle/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HitboxCircle
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -655,9 +676,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#change" class="md-nav__link">
+  <a href="#settext" class="md-nav__link">
     <span class="md-ellipsis">
-      change()
+      setText()
     </span>
   </a>
   
@@ -1011,9 +1032,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#change" class="md-nav__link">
+  <a href="#settext" class="md-nav__link">
     <span class="md-ellipsis">
-      change()
+      setText()
     </span>
   </a>
   
@@ -1062,6 +1083,8 @@
 
   <h1>Button</h1>
 
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="ow">new</span><span class="w"> </span><span class="nx">button</span><span class="p">(</span><span class="s2">&quot;color: #FFFFFF&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">64</span><span class="p">,</span><span class="w"> </span><span class="mf">16</span><span class="p">],</span><span class="w"> </span><span class="s2">&quot;Button&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;sans-serif&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;#000000&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">16</span><span class="p">,</span><span class="w"> </span><span class="mf">1000</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
 <table>
 <thead>
 <tr>
@@ -1076,7 +1099,7 @@
 <td>string</td>
 <td><code>string</code></td>
 <td>Image URL or color code format.</td>
-<td>PizzaJS Logo</td>
+<td>"color:#FFFFFF"</td>
 </tr>
 <tr>
 <td>[x, y]</td>
@@ -1088,13 +1111,19 @@
 <td>[width, height]</td>
 <td><code>number[]</code></td>
 <td>The width and height of the actor in pixels.</td>
-<td>[32, 32]</td>
+<td>[64, 16]</td>
 </tr>
 <tr>
 <td>text</td>
 <td><code>string</code></td>
 <td>The text of the button, if undefined it will be disabled.</td>
 <td>"Button"</td>
+</tr>
+<tr>
+<td>fontFamily</td>
+<td><code>string</code></td>
+<td>The fontFamily for the button text.</td>
+<td>"sans-serif"</td>
 </tr>
 <tr>
 <td>textColor</td>
@@ -1154,16 +1183,52 @@
 <td>Position coordinates of the actor.</td>
 </tr>
 <tr>
-<td><code>desiredWidth, desiredHeight</code></td>
-<td>The desired width and height for the text Formula: <code>width - margin</code> and <code>height - margin</code></td>
-</tr>
-<tr>
 <td><code>text</code></td>
 <td>Object for handling text functionality.</td>
 </tr>
 <tr>
-<td><code>drag</code></td>
-<td>Object for handling dragging functionality.</td>
+<td><code>text.active</code></td>
+<td>A boolean flag indicating whether the text should be active/shown or not.</td>
+</tr>
+<tr>
+<td><code>text.color</code></td>
+<td>Color of the text.</td>
+</tr>
+<tr>
+<td><code>text.text</code></td>
+<td>The current text of the button.</td>
+</tr>
+<tr>
+<td><code>text.size</code></td>
+<td>The size in px of the text.</td>
+</tr>
+<tr>
+<td><code>text.margin</code></td>
+<td>Margin for the text</td>
+</tr>
+<tr>
+<td><code>text.fontFamily</code></td>
+<td>The fontFamily</td>
+</tr>
+<tr>
+<td><code>text.baseline</code></td>
+<td>Baseline for text <code>"top"</code>, <code>"middle"</code>, <code>"bottom"</code>, or <code>"alphabetic"</code>.</td>
+</tr>
+<tr>
+<td><code>text.align</code></td>
+<td>Text alignment: <code>"start"</code>, <code>"end"</code>, <code>"left"</code>, <code>"right"</code>, or <code>"center"</code>.</td>
+</tr>
+<tr>
+<td><code>text.stroke.active</code></td>
+<td>A boolean flag indicating whether the stroke (outline) should be active or not.</td>
+</tr>
+<tr>
+<td><code>text.stroke.color</code></td>
+<td>A string representing the color of the stroke in hexadecimal, RGB, or other supported formats.</td>
+</tr>
+<tr>
+<td><code>text.stroke.width</code></td>
+<td>A numerical value representing the width of the stroke in pixels.</td>
 </tr>
 <tr>
 <td><code>click</code></td>
@@ -1211,125 +1276,13 @@
 </tr>
 <tr>
 <td><code>timeout</code></td>
-<td>The timeout in ms</td>
-</tr>
-<tr>
-<td><code>canClickDueTimeout</code></td>
-<td>Boolean that stays true if it can be clicked if not it stays false</td>
-</tr>
-<tr>
-<td><code>global.buttons</code></td>
-<td>Adds the object to global.buttons for addons</td>
+<td>The timeout object</td>
 </tr>
 </tbody>
 </table>
 <h2 id="methods">Methods</h2>
-<h3 id="draw">draw()</h3>
+<h3 id="draw"><code>draw()</code></h3>
 <p>The draw() method is responsible for rendering the button onto the canvas based on its current properties.</p>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-0-10">10</a></span>
-<span class="normal"><a href="#__codelineno-0-11">11</a></span>
-<span class="normal"><a href="#__codelineno-0-12">12</a></span>
-<span class="normal"><a href="#__codelineno-0-13">13</a></span>
-<span class="normal"><a href="#__codelineno-0-14">14</a></span>
-<span class="normal"><a href="#__codelineno-0-15">15</a></span>
-<span class="normal"><a href="#__codelineno-0-16">16</a></span>
-<span class="normal"><a href="#__codelineno-0-17">17</a></span>
-<span class="normal"><a href="#__codelineno-0-18">18</a></span>
-<span class="normal"><a href="#__codelineno-0-19">19</a></span>
-<span class="normal"><a href="#__codelineno-0-20">20</a></span>
-<span class="normal"><a href="#__codelineno-0-21">21</a></span>
-<span class="normal"><a href="#__codelineno-0-22">22</a></span>
-<span class="normal"><a href="#__codelineno-0-23">23</a></span>
-<span class="normal"><a href="#__codelineno-0-24">24</a></span>
-<span class="normal"><a href="#__codelineno-0-25">25</a></span>
-<span class="normal"><a href="#__codelineno-0-26">26</a></span>
-<span class="normal"><a href="#__codelineno-0-27">27</a></span>
-<span class="normal"><a href="#__codelineno-0-28">28</a></span>
-<span class="normal"><a href="#__codelineno-0-29">29</a></span>
-<span class="normal"><a href="#__codelineno-0-30">30</a></span>
-<span class="normal"><a href="#__codelineno-0-31">31</a></span>
-<span class="normal"><a href="#__codelineno-0-32">32</a></span>
-<span class="normal"><a href="#__codelineno-0-33">33</a></span>
-<span class="normal"><a href="#__codelineno-0-34">34</a></span>
-<span class="normal"><a href="#__codelineno-0-35">35</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">pjs</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;/source/modules/index.js&quot;</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="nx">pjs</span><span class="p">.</span><span class="nx">setup</span><span class="p">(</span><span class="mf">1920</span><span class="p">,</span><span class="w"> </span><span class="mf">1080</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="kd">let</span><span class="w"> </span><span class="nx">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">256</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="kd">let</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pjs</span><span class="p">.</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">size</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="kd">let</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pjs</span><span class="p">.</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">size</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8"></a>
-<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="kd">let</span><span class="w"> </span><span class="nx">MyButton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">pjs</span><span class="p">.</span><span class="nx">button</span><span class="p">(</span><span class="s2">&quot;color: #000000&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="nx">size</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">size</span><span class="p">],</span><span class="w"> </span><span class="s2">&quot;My Button&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;#FFFFFF&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">size</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">500</span><span class="p">)</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10"></a>
-<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;pjsUpdate&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">    </span><span class="nx">pjs</span><span class="p">.</span><span class="nx">clear</span><span class="p">()</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">    </span><span class="nx">MyButton</span><span class="p">.</span><span class="nx">draw</span><span class="p">()</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14"></a>
-<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">    </span><span class="c1">// Change color if hovered</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">    </span><span class="c1">//if (MyButton.hover) {</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">    </span><span class="c1">//    MyButton.color = &quot;#FF0000&quot;</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="w">    </span><span class="c1">//}</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="w">    </span><span class="c1">//else {</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="w">    </span><span class="c1">//    MyButton.color = &quot;#000000&quot;</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="w">    </span><span class="c1">//}</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22"></a>
-<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="w">    </span><span class="c1">// Indicate when the button is able to be pressed again</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="w">    </span><span class="c1">//if(MyButton.canClickDueTimeout){</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="w">    </span><span class="c1">//    pjs.ctx.fillStyle = &quot;#00FF00&quot;</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="w">    </span><span class="c1">//    pjs.drawtext(&quot;Can Click&quot;,[0,0],size*0.45)</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="w">    </span><span class="c1">//}</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="w">    </span><span class="c1">//else{</span>
-<a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="w">    </span><span class="c1">//    pjs.ctx.fillStyle = &quot;#FF0000&quot;</span>
-<a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="w">    </span><span class="c1">//    pjs.drawtext(&quot;Timeout&quot;,[0,0],size*0.45)</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="w">    </span><span class="c1">//}</span>
-<a id="__codelineno-0-32" name="__codelineno-0-32"></a>
-<a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="p">})</span>
-<a id="__codelineno-0-34" name="__codelineno-0-34"></a>
-<a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="nx">pjs</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
-</code></pre></div></td></tr></table></div>
-<p><img alt="Image" src="../img/buttondraw.png" /></p>
-</div>
-<h3 id="change"><code>change()</code></h3>
-<p>The change() method changes the text and fits it to the button with a provided font and text</p>
-<div class="admonition failure">
-<p class="admonition-title">Failure</p>
-<p>change() uses fitext that doens't properly fit text in some cases.</p>
-</div>
-<table>
-<thead>
-<tr>
-<th>Parameters</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>text</td>
-<td><code>string</code></td>
-<td>The text to be changed</td>
-<td>-</td>
-</tr>
-<tr>
-<td>fontFamily</td>
-<td><code>string</code></td>
-<td>The fontFamily that is goind to be changed</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
@@ -1357,7 +1310,16 @@
 <span class="normal"><a href="#__codelineno-1-23">23</a></span>
 <span class="normal"><a href="#__codelineno-1-24">24</a></span>
 <span class="normal"><a href="#__codelineno-1-25">25</a></span>
-<span class="normal"><a href="#__codelineno-1-26">26</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">pjs</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;/source/modules/index.js&quot;</span>
+<span class="normal"><a href="#__codelineno-1-26">26</a></span>
+<span class="normal"><a href="#__codelineno-1-27">27</a></span>
+<span class="normal"><a href="#__codelineno-1-28">28</a></span>
+<span class="normal"><a href="#__codelineno-1-29">29</a></span>
+<span class="normal"><a href="#__codelineno-1-30">30</a></span>
+<span class="normal"><a href="#__codelineno-1-31">31</a></span>
+<span class="normal"><a href="#__codelineno-1-32">32</a></span>
+<span class="normal"><a href="#__codelineno-1-33">33</a></span>
+<span class="normal"><a href="#__codelineno-1-34">34</a></span>
+<span class="normal"><a href="#__codelineno-1-35">35</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">pjs</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;/source/modules/index.js&quot;</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2"></a>
 <a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="nx">pjs</span><span class="p">.</span><span class="nx">setup</span><span class="p">(</span><span class="mf">1920</span><span class="p">,</span><span class="w"> </span><span class="mf">1080</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4"></a>
@@ -1365,24 +1327,119 @@
 <a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="kd">let</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pjs</span><span class="p">.</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">size</span>
 <a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="kd">let</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pjs</span><span class="p">.</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">size</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span>
 <a id="__codelineno-1-8" name="__codelineno-1-8"></a>
-<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="kd">let</span><span class="w"> </span><span class="nx">MyButton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">pjs</span><span class="p">.</span><span class="nx">button</span><span class="p">(</span><span class="s2">&quot;color: #000000&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="nx">size</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">size</span><span class="p">],</span><span class="w"> </span><span class="s2">&quot;My Button&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;#FFFFFF&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">size</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">500</span><span class="p">);</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="kd">let</span><span class="w"> </span><span class="nx">MyButton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">pjs</span><span class="p">.</span><span class="nx">button</span><span class="p">(</span><span class="s2">&quot;color: #000000&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="nx">size</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">size</span><span class="p">],</span><span class="w"> </span><span class="s2">&quot;My Button&quot;</span><span class="p">,</span><span class="s2">&quot;sans-serif&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;#FFFFFF&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">size</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">500</span><span class="p">)</span>
 <a id="__codelineno-1-10" name="__codelineno-1-10"></a>
 <a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;pjsUpdate&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">    </span><span class="nx">pjs</span><span class="p">.</span><span class="nx">clear</span><span class="p">()</span>
 <a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">    </span><span class="nx">MyButton</span><span class="p">.</span><span class="nx">draw</span><span class="p">()</span>
 <a id="__codelineno-1-14" name="__codelineno-1-14"></a>
-<a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">MyButton</span><span class="p">.</span><span class="nx">click</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">MyButton</span><span class="p">.</span><span class="nx">text</span><span class="p">.</span><span class="nx">text</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;My Button&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="w">            </span><span class="nx">MyButton</span><span class="p">.</span><span class="nx">change</span><span class="p">(</span><span class="s2">&quot;Super Button&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;sans-serif&quot;</span><span class="p">)</span>
-<a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="w">        </span><span class="p">}</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="w">            </span><span class="nx">MyButton</span><span class="p">.</span><span class="nx">change</span><span class="p">(</span><span class="s2">&quot;My Button&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;sans-serif&quot;</span><span class="p">)</span>
-<a id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="w">        </span><span class="p">}</span>
-<a id="__codelineno-1-22" name="__codelineno-1-22"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-1-23" name="__codelineno-1-23"></a>
-<a id="__codelineno-1-24" name="__codelineno-1-24"></a><span class="p">})</span>
-<a id="__codelineno-1-25" name="__codelineno-1-25"></a>
-<a id="__codelineno-1-26" name="__codelineno-1-26"></a><span class="nx">pjs</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="w">    </span><span class="c1">// Change color if hovered</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="w">    </span><span class="c1">//if (MyButton.hover) {</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="w">    </span><span class="c1">//    MyButton.color = &quot;#FF0000&quot;</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="w">    </span><span class="c1">//}</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="w">    </span><span class="c1">//else {</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="w">    </span><span class="c1">//    MyButton.color = &quot;#000000&quot;</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="w">    </span><span class="c1">//}</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22"></a>
+<a id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="w">    </span><span class="c1">// Indicate when the button is able to be pressed again</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24"></a><span class="w">    </span><span class="c1">//if(!MyButton.timeout.active){</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25"></a><span class="w">    </span><span class="c1">//    pjs.ctx.fillStyle = &quot;#00FF00&quot;</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26"></a><span class="w">    </span><span class="c1">//    pjs.drawtext(&quot;Can Click&quot;,[0,0],size*0.45)</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27"></a><span class="w">    </span><span class="c1">//}</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28"></a><span class="w">    </span><span class="c1">//else{</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29"></a><span class="w">    </span><span class="c1">//    pjs.ctx.fillStyle = &quot;#FF0000&quot;</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30"></a><span class="w">    </span><span class="c1">//    pjs.drawtext(&quot;Timeout&quot;,[0,0],size*0.45)</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31"></a><span class="w">    </span><span class="c1">//}</span>
+<a id="__codelineno-1-32" name="__codelineno-1-32"></a>
+<a id="__codelineno-1-33" name="__codelineno-1-33"></a><span class="p">})</span>
+<a id="__codelineno-1-34" name="__codelineno-1-34"></a>
+<a id="__codelineno-1-35" name="__codelineno-1-35"></a><span class="nx">pjs</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<p><img alt="Image" src="../img/buttondraw.png" /></p>
+</div>
+<h3 id="settext"><code>setText()</code></h3>
+<p>The setText() method changes the text and fits it to the button with a provided font and text</p>
+<div class="admonition failure">
+<p class="admonition-title">Failure</p>
+<p>setText() uses fitext that doens't properly fit text with some fonts.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>text</td>
+<td><code>string</code></td>
+<td>The text to be changed</td>
+<td>-</td>
+</tr>
+<tr>
+<td>fontFamily</td>
+<td><code>string</code></td>
+<td>The fontFamily that is goind to be changed</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#__codelineno-2-18">18</a></span>
+<span class="normal"><a href="#__codelineno-2-19">19</a></span>
+<span class="normal"><a href="#__codelineno-2-20">20</a></span>
+<span class="normal"><a href="#__codelineno-2-21">21</a></span>
+<span class="normal"><a href="#__codelineno-2-22">22</a></span>
+<span class="normal"><a href="#__codelineno-2-23">23</a></span>
+<span class="normal"><a href="#__codelineno-2-24">24</a></span>
+<span class="normal"><a href="#__codelineno-2-25">25</a></span>
+<span class="normal"><a href="#__codelineno-2-26">26</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">pjs</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;/source/modules/index.js&quot;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="nx">pjs</span><span class="p">.</span><span class="nx">setup</span><span class="p">(</span><span class="mf">1920</span><span class="p">,</span><span class="w"> </span><span class="mf">1080</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="kd">let</span><span class="w"> </span><span class="nx">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">256</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="kd">let</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pjs</span><span class="p">.</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">size</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="kd">let</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pjs</span><span class="p">.</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">size</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="kd">let</span><span class="w"> </span><span class="nx">MyButton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">pjs</span><span class="p">.</span><span class="nx">button</span><span class="p">(</span><span class="s2">&quot;color: #000000&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="nx">size</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">size</span><span class="p">],</span><span class="w"> </span><span class="s2">&quot;My Button&quot;</span><span class="p">,</span><span class="s2">&quot;sans-serif&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;#FFFFFF&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">size</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">500</span><span class="p">);</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;pjsUpdate&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="w">    </span><span class="nx">pjs</span><span class="p">.</span><span class="nx">clear</span><span class="p">()</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="w">    </span><span class="nx">MyButton</span><span class="p">.</span><span class="nx">draw</span><span class="p">()</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">MyButton</span><span class="p">.</span><span class="nx">click</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">MyButton</span><span class="p">.</span><span class="nx">text</span><span class="p">.</span><span class="nx">text</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;My Button&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="w">            </span><span class="nx">MyButton</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="s2">&quot;Super Button&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;sans-serif&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="w">            </span><span class="nx">MyButton</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="s2">&quot;My Button&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;sans-serif&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23"></a>
+<a id="__codelineno-2-24" name="__codelineno-2-24"></a><span class="p">})</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25"></a>
+<a id="__codelineno-2-26" name="__codelineno-2-26"></a><span class="nx">pjs</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
 <p><img alt="Image" src="../img/buttondraw.png" /></p>
 <p><img alt="Image" src="../img/buttonchange.png" /></p>

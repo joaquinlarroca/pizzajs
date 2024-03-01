@@ -12,6 +12,7 @@ let interval = setInterval(() => {
 }, 100)
 
 window.addEventListener("pjsAfterUpdate", () => {
+    bar.color = "rgba(0,0,0,0.5)"
     bar.draw()
     pjs.ctx.fillStyle = "#FFFFFF"
     var temp = typeof pjs.mouse.objectSelected == "object"

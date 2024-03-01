@@ -116,7 +116,7 @@ export function fitText(text, width, height, fontFamily) {
     }
     else {
         let fontSize = Math.min(width, height);
-        // Measure text width with current font size
+        let loopTime = 100
         ctx.font = `${fontSize}px ${fontFamily}`;
         const textMetrics = ctx.measureText(text);
         // Calculate the scaling factor to fit the text
@@ -129,6 +129,10 @@ export function fitText(text, width, height, fontFamily) {
         while (ctx.measureText(text).width > width) {
             fontSize -= 0.1;
             ctx.font = `${fontSize}px ${fontFamily}`;
+            loopTime -= 1
+            if(loopTime <= 0){
+                break
+            }
         }
         return fontSize;
     }
@@ -220,7 +224,7 @@ export async function loadFont(fontFamily, fontURL) {
     }
 }
 /**
- * Clears the canvas if the context (`ctx`) is available.
+ * Clears the canvas.
  */
 export function clear() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -238,27 +242,26 @@ export function fillRect(x = 0, y = 0, width = 0, height = 0) {
     ctx.fillRect(x, y, width, height);
 }
 /**
- * Starts an animation loop using requestAnimationFrame.
+ * Starts an animation loop.
  */
 export function start() {
     if (global.hasSetup) {
         let timestamp = performance.now();
 
-        function animate(currentTimestamp) {
+        function updateAnimationFrame(currentTimestamp) {
             global.deltaTime = (currentTimestamp - timestamp) / 1000;
             timestamp = currentTimestamp;
             notifyUpdate(global.deltaTime, Math.round(1 / global.deltaTime));
-            
-            requestAnimationFrame(animate);
+            requestAnimationFrame(updateAnimationFrame);
         }
-        requestAnimationFrame(animate);
+        requestAnimationFrame(updateAnimationFrame);
     }
     else {
         global.error("f", 1);
     }
 }
 /**
- * Notifies about updates by dispatching a custom 'pjsUpdate' event.
+ * Notifies about updates.
  */
 export function notifyUpdate(deltaTime, fps) {
     window.dispatchEvent(new CustomEvent('pjsUpdate', { detail: { deltaTime, fps } }));
@@ -269,6 +272,7 @@ export const canvas = document.createElement('canvas');
 export const ctx = canvas.getContext('2d');
 canvas.id = "pjsCanvas";
 canvas.style.display = "initial"
+canvas.style.backgroundColor = "#000000"
 /**
  * Sets up the canvas with specified width, height, and other config.
  * 

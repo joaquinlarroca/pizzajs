@@ -10,8 +10,11 @@ let interval = setInterval(() => {
     }
 }, 100)
 window.addEventListener("pjsAfterUpdate", () => {
-    bar.draw()
-    pjs.ctx.fillStyle = "#FFFFFF"
-    pjs.drawtext("FPS: " + Math.round(1 / pjs.global.deltaTime), [0, 0], text)
-    pjs.drawtext("DT: " +Math.round(pjs.global.deltaTime*10000)/10000, [text + pjs.measureTextWidth("FPS: " + Math.round(1 / pjs.global.deltaTime), text, "sans-serif"), 0],text)
+    if (pjs.keyPressed("k")) {
+        bar.color = "rgba(8, 8, 173, .75)"
+        bar.draw()
+        pjs.ctx.fillStyle = "#FFFFFF"
+        pjs.drawtext("FPS: " + Math.round(1 / pjs.global.deltaTime), [0, 0], text)
+        pjs.drawtext("DT: " + Math.round(pjs.global.deltaTime * 10000) / 10000, [text + pjs.measureTextWidth("FPS: " + Math.round(1 / pjs.global.deltaTime), text, "sans-serif"), 0], text)
+    }
 })

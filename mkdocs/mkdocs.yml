@@ -12,6 +12,7 @@ nav:
     - Actor: classes/actor.md
     - Hitbox: classes/hitbox.md
     - Hitbox2: classes/hitbox2.md
+    - HitboxCircle: classes/hitboxCircle.md
     - Button: classes/button.md
     - Rect: classes/rect.md
     - Slider: classes/slider.md

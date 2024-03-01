@@ -10,7 +10,10 @@
 |------------------|--------------------------------------------------------------------------------|
 | `timeMS`         | The time in ms of the delay before it can be started.                          |
 | `active`         | Indicates whether the timeout is finished or not started and when its running. |
-| `timeElapsed`    | Holds the time elapsed since start() up to timeMS in milliseconds              |
+| `timeElapsed`    | Holds the time elapsed since start() up to timeMS in milliseconds.              |
+| `timeLeft`       | The remaining time in milliseconds before the timeout completes.              |
+| `updateTime`     | The interval in milliseconds for updating `timeElapsed` and `timeLeft`.              |
+| `currentTime`    | The timestamp when the timeout was started.              |
 
 
 ## Methods
@@ -23,7 +26,6 @@ The start() method is responsible for starting the timeout (setting active to tr
     ```js
 
     import * as pjs from "/source/modules/index.js"
-
 
     pjs.setup(1920, 1080, 1);
 

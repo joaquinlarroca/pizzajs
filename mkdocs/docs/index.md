@@ -43,15 +43,14 @@ import * as pjs from "/source/modules/index.js"
 
 ```js 
 // Use PizzaJS without a prefix
-// Import global and image
-import { global, image } from '/source/modules/global.js'
+// Import global
+import { global, image } from './source/modules/global.js'
 // Import functions
-import { initLoaderCheck, canvas, ctx, drawtext, loadImage, loadSound, loadFont, fillRect, setup, start, clear, fitText, measureTextWidth } from '/source/modules/functions.js';
+import { initLoaderCheck, canvas, ctx, drawtext, loadImage, loadSound, loadFont, fillRect, setup, start, clear, fitText, measureTextWidth, shakeScreen } from './source/modules/functions.js';
 // Import listeners
-import { setupAllEventListeners, setupMouseListener, setupResizeListener, setupKeyboardListener, keyPressed, mouse, pressedKeys } from '/source/modules/listener.js';
+import { setupAllEventListeners, setupMouseListener, setupResizeListener, setupKeyboardListener, keyPressed, mouse, pressedKeys } from './source/modules/listener.js';
 // Import all classes
-import { actor, button, hitbox, hitbox2, rect, sound, slider } from '/source/modules/classes.js';
-
+import { actor, button, hitbox, hitbox2, hitboxCircle, rect, sound, slider, timeout } from './source/modules/classes.js';
 // Starts the loadCheck
 initLoaderCheck()
 ```
@@ -62,8 +61,11 @@ initLoaderCheck()
 | `version`                 |  Holds the current version in a string            |
 | `build`                   | Current build            |
 | `debug`                   | Just as a feature. No class has any special atribute when its true.            |
+| `all`                     | An array that holds all actors,sliders,buttons and rects.             |
 | `actors`                  | An array with all the actors.            |
 | `buttons`                 | An array with all the buttons.             |
+| `sliders`                 | An array with all the sliders.             |
+| `sounds`                  | An array that holds all sounds.             |
 | `hasLoaded`               | Indicator that tells if all assets where loaded.           |
 | `toLoad`                  | A number that show how many things it has to load.            |
 | `Loaded`                  | A number that show how many things loaded.            |

@@ -113,8 +113,57 @@ export class hitbox2 {
         return this.right >= point[0] && this.left <= point[0] && this.bottom >= point[1] && this.top <= point[1]
     }
 }
+export class hitboxCircle {
+    constructor(x, y, radius) {
+        if (typeof x != "number" || typeof y != "number") {
+            global.error("c", 4);
+        }
+        else if (typeof radius != "number" || radius <= 0) {
+            global.error("c", 17);
+        }
+        else {
+            this.x = x
+            this.y = y
+            this.radius = radius
+            this.lineWidth = (global.setupWidth + global.setupHeight) / 750
+            this.color = `rgb(${Math.round(Math.random() * 225) + 30},${Math.round(Math.random() * 225) + 30},${Math.round(Math.random() * 225) + 30})`
+        }
+
+    }
+    draw() {
+        ctx.save();
+        ctx.beginPath();
+        ctx.lineWidth = this.lineWidth
+        ctx.strokeStyle = this.color
+        ctx.moveTo(this.x, this.y);
+        ctx.lineTo(this.x + this.radius, this.y);
+        ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+        ctx.stroke()
+        ctx.restore();
+    }
+    collide(hitbox) {
+        hitbox.updateDimensions()
+        const dx = this.x - Math.max(hitbox.left, Math.min(this.x, hitbox.right))
+        const dy = this.y - Math.max(hitbox.top, Math.min(this.y, hitbox.bottom))
+        return Math.sqrt(dx ** 2 + dy ** 2) <= this.radius
+    }
+    collide2(hitbox) {
+        hitbox.updateDimensions()
+        const dx = this.x - Math.max(hitbox.left, Math.min(this.x, hitbox.right))
+        const dy = this.y - Math.max(hitbox.top, Math.min(this.y, hitbox.bottom))
+        return Math.sqrt(dx ** 2 + dy ** 2) <= this.radius
+    }
+    collideCircle(hitbox) {
+        const distance = Math.sqrt((hitbox.x - this.x) ** 2 + (hitbox.y - this.y) ** 2);
+        return distance <= this.radius + hitbox.radius;
+    }
+    collidepoint(point) {
+        const distance = Math.sqrt((this.x - point[0]) ** 2 + (this.y - point[1]) ** 2);
+        return distance <= this.radius;
+    }
+}
 export class actor {
-    constructor(string = "/source/icons/PizzaJS256x.png", [x = 0, y = 0], [width = 32, height = 32], [offsetX = 0, offsetY = 0]) {
+    constructor(string = "color:#FFFFFF", [x = 0, y = 0], [width = 32, height = 32], [offsetX = 0, offsetY = 0]) {
         if (typeof width != "number" || width <= 0 || typeof height != "number" || height <= 0) {
             global.error("c", 3);
         }
@@ -125,6 +174,8 @@ export class actor {
             global.error("c", 5);
         }
         else {
+            global.all.push(this)
+            global.actors.push(this)
             string = string.split(":")
             this.image = new Image()
             if (string[0] == "color") {
@@ -152,7 +203,7 @@ export class actor {
 
             this.halfwidth = this.width / 2
             this.halfheight = this.height / 2
-            this.scale = [1,1]
+            this.scale = [1, 1]
             this.drag = {
                 hitbox: new hitbox(this, 0, undefined, this.offsetX, this.offsetY),
                 active: false,
@@ -181,7 +232,6 @@ export class actor {
                 color: "#FFFFFF",
                 width: 5
             }
-            global.actors.push(this)
         }
     }
     draw() {
@@ -213,19 +263,15 @@ export class actor {
         if (!this.conditions.canExitCanvas) {
             if (this.x + this.offsetX < 0) {
                 this.x = -this.offsetX;
-                this.xvelocity = 0
             }
             if (this.x + this.width + this.offsetX > canvas.width) {
                 this.x = canvas.width - this.width - this.offsetX
-                this.xvelocity = 0
             }
             if (this.y + this.offsetY < 0) {
                 this.y = -this.offsetY
-                this.yvelocity = 0
             }
             if (this.y + this.height + this.offsetY > canvas.height) {
                 this.y = canvas.height - this.height - this.offsetY
-                this.yvelocity = 0
             }
         }
         this.halfwidth = this.width / 2
@@ -278,16 +324,6 @@ export class actor {
         ctx.restore();
     }
     drawAnchorPoint() {
-        //this.halfwidth = this.width / 2
-        //this.halfheight = this.height / 2
-        //ctx.save();
-        //ctx.globalAlpha = this.alpha;
-        //ctx.fillStyle = "#FFFFFF"
-        //ctx.fillRect(this.x - 3 + this.halfwidth, this.y - 3 + this.halfheight, 6, 6)
-        //ctx.fillStyle = "#000000"
-        //ctx.fillRect(this.x - 1 + this.halfwidth, this.y - 1 + this.halfheight, 2, 2)
-        //ctx.restore();
-
         this.halfwidth = this.width / 2
         this.halfheight = this.height / 2
         var size = (this.width + this.height) * 0.05
@@ -348,7 +384,7 @@ export class actor {
     }
 }
 export class button {
-    constructor(string = "/source/icons/PizzaJS256x.png", [x = 0, y = 0], [width = 64, height = 16], text = "Button", textColor = "#ffffff", textMargin = 0, timeoutMS = 0) {
+    constructor(string = "color:#FFFFFF", [x = 0, y = 0], [width = 64, height = 16], text = "Button", fontFamily = "sans-serif", textColor = "#ffffff", textMargin = 0, timeoutMS = 0) {
         if (typeof width != "number" || width <= 0 || typeof height != "number" || height <= 0) {
             global.error("c", 3);
         }
@@ -365,6 +401,8 @@ export class button {
             global.error("c", 8);
         }
         else {
+            global.all.push(this)
+            global.buttons.push(this)
             string = string.split(":")
             this.image = new Image()
             if (string[0] == "color") {
@@ -376,8 +414,6 @@ export class button {
                 this.color = "#000000"
                 this.image.src = loadImage(undefined, string[0])
             }
-
-            global.buttons.push(this)
             if (string[0] == "bypass.img") {
                 this.image.src = "/source/images/bypass.png"
             }
@@ -386,8 +422,6 @@ export class button {
             this.y = y
             this.width = width
             this.height = height
-            this.desiredWidth = width - textMargin
-            this.desiredHeight = height - textMargin
 
             this.hitbox = new hitbox(this, 0, undefined, 0, 0)
             this.anglex = this.x + this.width / 2
@@ -407,10 +441,13 @@ export class button {
                 active: typeof text == "string",
                 text: text,
                 color: textColor,
-                size: fitText(text, this.desiredWidth, this.desiredHeight, "sans-serif"),
-                fontFamily: "sans-serif",
+                size: fitText(text, width - textMargin, height - textMargin, fontFamily),
+                margin: textMargin,
+                fontFamily: fontFamily,
                 baseline: "middle",
+                baselinePos: 0,
                 align: "center",
+                alignPos: 0,
                 margin: textMargin,
                 stroke: {
                     active: false,
@@ -419,7 +456,6 @@ export class button {
                 }
             }
             this.timeout = new timeout(timeoutMS)
-
             this.stroke = {
                 active: false,
                 color: "#FFFFFF",
@@ -428,10 +464,10 @@ export class button {
             this.radius = 0
         }
     }
-    change(text, fontFamily) {
+    setText(text, fontFamily) {
         this.text.text = text
         this.text.fontFamily = fontFamily
-        this.text.size = fitText(text, this.desiredWidth, this.desiredHeight, fontFamily)
+        this.text.size = fitText(text, this.width - this.text.margin, this.height - this.text.margin, fontFamily)
     }
     draw() {
         this.halfheight = this.height / 2
@@ -491,21 +527,51 @@ export class button {
             ctx.fill();
         }
         ctx.restore();
+        ctx.save()
         if (this.text.active) {
             ctx.fillStyle = this.text.color;
             ctx.beginPath();
-            ctx.textBaseline = this.text.baseline;
-            ctx.textAlign = this.text.align;
-            ctx.font = `${this.text.size}px ${this.text.fontFamily}`;
-            drawtext(this.text.text, [this.pos[0], this.pos[1]], this.text.size, this.text.fontFamily, this.text.baseline, this.text.align, this.angle, this.alpha)
+            switch (this.text.align) {
+                case "left":
+                    this.text.alignPos = this.x
+                    break;
+                case "right":
+                    this.text.alignPos = this.x + this.width
+                    break;
+                case "center":
+                    this.text.alignPos = this.pos[0]
+                    break;
+                default:
+                    this.text.alignPos = this.pos[0]
+                    break;
+            }
+            switch (this.text.baseline) {
+                case "top":
+                    this.text.baselinePos = this.y
+                    break;
+                case "middle":
+                    this.text.baselinePos = this.pos[1]
+                    break;
+                case "bottom":
+                    this.text.baselinePos = this.y + this.height
+                    break;
+                default:
+                    this.text.baselinePos = this.pos[1]
+                    break;
+            }
+            drawtext(this.text.text, [this.text.alignPos, this.text.baselinePos], this.text.size, this.text.fontFamily, this.text.baseline, this.text.align, this.angle, this.alpha)
             if (this.text.stroke.active) {
                 ctx.strokeStyle = this.text.stroke.color;
                 ctx.lineWidth = this.text.stroke.width;
-                ctx.strokeText(this.text.text, this.pos[0], this.pos[1]);
+                ctx.textBaseline = this.text.baseline;
+                ctx.textAlign = this.text.align;
+                ctx.font = `${this.text.size}px ${this.text.fontFamily}`;
+                ctx.strokeText(this.text.text, this.text.alignPos, this.text.baselinePos);
             }
             ctx.closePath();
             ctx.fill();
         }
+        ctx.restore();
     }
     changeImage(string) {
         string = string.split(":")
@@ -545,24 +611,26 @@ export class rect {
             this.color = `rgb(${Math.round(Math.random() * 225) + 30},${Math.round(Math.random() * 225) + 30},${Math.round(Math.random() * 225) + 30})`;
         }
         else {
+            global.all.push(this)
+            global.rects.push(this)
             this.color = color
-        }
-        this.x = x
-        this.y = y
-        this.width = width
-        this.height = height
-        this.hitbox = new hitbox(this, 0, undefined, 0, 0)
-        this.alpha = 1.0
-        this.angle = 0
-        this.angley = 0
-        this.anglex = 0
-        this.halfheight = this.height / 2
-        this.halfwidth = this.width / 2
-        this.radius = 0
-        this.stroke = {
-            active: false,
-            color: "#FFFFFF",
-            width: 5
+            this.x = x
+            this.y = y
+            this.width = width
+            this.height = height
+            this.hitbox = new hitbox(this, 0, undefined, 0, 0)
+            this.alpha = 1.0
+            this.angle = 0
+            this.angley = 0
+            this.anglex = 0
+            this.halfheight = this.height / 2
+            this.halfwidth = this.width / 2
+            this.radius = 0
+            this.stroke = {
+                active: false,
+                color: "#FFFFFF",
+                width: 5
+            }
         }
     }
     draw() {
@@ -587,7 +655,7 @@ export class rect {
     }
 }
 export class slider {
-    constructor(background = "/source/icons/PizzaJS256x.png", thumb = "/source/icons/PizzaJS256x.png", [x = 0, y = 0], [width = 64, height = 16], thumbwidth = 16, [minpercentage = 0, maxpercentage = 100], sliderFill = "#00FF00", currentpercentage = 0) {
+    constructor(background = "color: #FF0000", thumb = "color: #aeaeae", [x = 0, y = 0], [width = 64, height = 16], thumbwidth = 16, [minpercentage = 0, maxpercentage = 100], sliderFill = "#00FF00", currentpercentage = 0) {
         if (typeof width != "number" || width <= 0 || typeof height != "number" || height <= 0) {
             global.error("c", 3);
         }
@@ -601,6 +669,8 @@ export class slider {
             global.error("c", 11);
         }
         else {
+            global.all.push(this)
+            global.sliders.push(this)
             this.thumb = {
                 image: undefined,
                 x: x,
@@ -620,12 +690,12 @@ export class slider {
             var image1 = background.split(":")
             this.background = new Image()
             if (image1[0] == "color") {
-                this.usingColor1 = true
-                this.color1 = image1[1]
+                this.BGusingColor = true
+                this.BGcolor = image1[1]
             }
             else {
-                this.usingColor1 = false
-                this.color1 = "#000000"
+                this.BGusingColor = false
+                this.BGcolor = "#000000"
                 this.background.src = loadImage(undefined, image1[0])
             }
 
@@ -750,7 +820,7 @@ export class slider {
         ctx.rotate(0.017453292519943295 * this.angle);
         ctx.globalAlpha = this.alpha;
 
-        if (this.usingColor1) {
+        if (this.BGusingColor) {
             ctx.fillStyle = this.color1
             ctx.beginPath();
             ctx.roundRect(-this.thumb.width / 2, -this.height / 2, this.thumb.width + this.width, this.height, this.radius);
@@ -816,16 +886,16 @@ export class slider {
     changeImage(stringbackground, stringthumb) {
         stringbackground = stringbackground.split(":")
         if (stringbackground[0] == "color") {
-            this.usingColor1 = true
+            this.BGusingColor = true
             this.color1 = stringbackground[1]
         }
         else if (global.hasLoaded) {
-            this.usingColor1 = false
+            this.BGusingColor = false
             this.color1 = "#000000"
             this.background.src = loadImage(undefined, stringbackground[0]);
         }
         else {
-            this.usingColor1 = false
+            this.BGusingColor = false
             this.color1 = "#000000"
         }
 
@@ -849,11 +919,14 @@ export class timeout {
     constructor(timeMS = 1000) {
         if (typeof timeMS !== "number") {
             global.error("c", 8);
-        } else {
+        }
+        else {
             this.time = timeMS;
             this.active = false;
             this.currentTime = 0;
+            this.timeLeft = 0
             this.timeElapsed = 0;
+            this.updateTime = 75
         }
     }
     start() {
@@ -864,15 +937,14 @@ export class timeout {
                 this.active = false;
                 this.currentTime = 0;
                 this.timeElapsed = 0;
+                this.timeLeft = 0;
                 clearTimeout(timeout);
             }, this.time);
-
-            // Update time elapsed every 100 milliseconds
-            const updateInterval = 70;
             const updateTimeout = () => {
                 if (this.active) {
                     this.timeElapsed = Date.now() - this.currentTime;
-                    setTimeout(updateTimeout, updateInterval);
+                    this.timeLeft = this.time - this.timeElapsed
+                    setTimeout(updateTimeout, this.updateTime);
                 }
             };
             updateTimeout();
@@ -891,6 +963,7 @@ export class sound {
             global.error("c", 14);
         }
         else {
+            global.sounds.push(this)
             this.sound = new Audio()
             this.sound.src = loadSound(url)
             this.sound.loop = loop

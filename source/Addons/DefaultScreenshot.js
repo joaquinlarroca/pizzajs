@@ -9,5 +9,6 @@ let interval = setInterval(() => {
     }
 }, 100)
 window.addEventListener("pjsAfterClear", () => {
+    bg.color = pjs.canvas.style.backgroundColor
     bg.draw()
 })

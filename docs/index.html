@@ -699,6 +699,27 @@
   
   
     <li class="md-nav__item">
+      <a href="classes/hitboxCircle/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HitboxCircle
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="classes/button/" class="md-nav__link">
         
   
@@ -1167,19 +1188,17 @@
 <span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
 <span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
 <span class="normal"><a href="#__codelineno-2-10">10</a></span>
-<span class="normal"><a href="#__codelineno-2-11">11</a></span>
-<span class="normal"><a href="#__codelineno-2-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="c1">// Use PizzaJS without a prefix</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="c1">// Import global and image</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">global</span><span class="p">,</span><span class="w"> </span><span class="nx">image</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;/source/modules/global.js&#39;</span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="c1">// Use PizzaJS without a prefix</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="c1">// Import global</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">global</span><span class="p">,</span><span class="w"> </span><span class="nx">image</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./source/modules/global.js&#39;</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="c1">// Import functions</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">initLoaderCheck</span><span class="p">,</span><span class="w"> </span><span class="nx">canvas</span><span class="p">,</span><span class="w"> </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">drawtext</span><span class="p">,</span><span class="w"> </span><span class="nx">loadImage</span><span class="p">,</span><span class="w"> </span><span class="nx">loadSound</span><span class="p">,</span><span class="w"> </span><span class="nx">loadFont</span><span class="p">,</span><span class="w"> </span><span class="nx">fillRect</span><span class="p">,</span><span class="w"> </span><span class="nx">setup</span><span class="p">,</span><span class="w"> </span><span class="nx">start</span><span class="p">,</span><span class="w"> </span><span class="nx">clear</span><span class="p">,</span><span class="w"> </span><span class="nx">fitText</span><span class="p">,</span><span class="w"> </span><span class="nx">measureTextWidth</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;/source/modules/functions.js&#39;</span><span class="p">;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">initLoaderCheck</span><span class="p">,</span><span class="w"> </span><span class="nx">canvas</span><span class="p">,</span><span class="w"> </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">drawtext</span><span class="p">,</span><span class="w"> </span><span class="nx">loadImage</span><span class="p">,</span><span class="w"> </span><span class="nx">loadSound</span><span class="p">,</span><span class="w"> </span><span class="nx">loadFont</span><span class="p">,</span><span class="w"> </span><span class="nx">fillRect</span><span class="p">,</span><span class="w"> </span><span class="nx">setup</span><span class="p">,</span><span class="w"> </span><span class="nx">start</span><span class="p">,</span><span class="w"> </span><span class="nx">clear</span><span class="p">,</span><span class="w"> </span><span class="nx">fitText</span><span class="p">,</span><span class="w"> </span><span class="nx">measureTextWidth</span><span class="p">,</span><span class="w"> </span><span class="nx">shakeScreen</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./source/modules/functions.js&#39;</span><span class="p">;</span>
 <a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="c1">// Import listeners</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">setupAllEventListeners</span><span class="p">,</span><span class="w"> </span><span class="nx">setupMouseListener</span><span class="p">,</span><span class="w"> </span><span class="nx">setupResizeListener</span><span class="p">,</span><span class="w"> </span><span class="nx">setupKeyboardListener</span><span class="p">,</span><span class="w"> </span><span class="nx">keyPressed</span><span class="p">,</span><span class="w"> </span><span class="nx">mouse</span><span class="p">,</span><span class="w"> </span><span class="nx">pressedKeys</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;/source/modules/listener.js&#39;</span><span class="p">;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">setupAllEventListeners</span><span class="p">,</span><span class="w"> </span><span class="nx">setupMouseListener</span><span class="p">,</span><span class="w"> </span><span class="nx">setupResizeListener</span><span class="p">,</span><span class="w"> </span><span class="nx">setupKeyboardListener</span><span class="p">,</span><span class="w"> </span><span class="nx">keyPressed</span><span class="p">,</span><span class="w"> </span><span class="nx">mouse</span><span class="p">,</span><span class="w"> </span><span class="nx">pressedKeys</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./source/modules/listener.js&#39;</span><span class="p">;</span>
 <a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="c1">// Import all classes</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">actor</span><span class="p">,</span><span class="w"> </span><span class="nx">button</span><span class="p">,</span><span class="w"> </span><span class="nx">hitbox</span><span class="p">,</span><span class="w"> </span><span class="nx">hitbox2</span><span class="p">,</span><span class="w"> </span><span class="nx">rect</span><span class="p">,</span><span class="w"> </span><span class="nx">sound</span><span class="p">,</span><span class="w"> </span><span class="nx">slider</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;/source/modules/classes.js&#39;</span><span class="p">;</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10"></a>
-<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="c1">// Starts the loadCheck</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="nx">initLoaderCheck</span><span class="p">()</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">actor</span><span class="p">,</span><span class="w"> </span><span class="nx">button</span><span class="p">,</span><span class="w"> </span><span class="nx">hitbox</span><span class="p">,</span><span class="w"> </span><span class="nx">hitbox2</span><span class="p">,</span><span class="w"> </span><span class="nx">hitboxCircle</span><span class="p">,</span><span class="w"> </span><span class="nx">rect</span><span class="p">,</span><span class="w"> </span><span class="nx">sound</span><span class="p">,</span><span class="w"> </span><span class="nx">slider</span><span class="p">,</span><span class="w"> </span><span class="nx">timeout</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./source/modules/classes.js&#39;</span><span class="p">;</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="c1">// Starts the loadCheck</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="nx">initLoaderCheck</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="global-object">Global object</h2>
 <table>
@@ -1203,12 +1222,24 @@
 <td>Just as a feature. No class has any special atribute when its true.</td>
 </tr>
 <tr>
+<td><code>all</code></td>
+<td>An array that holds all actors,sliders,buttons and rects.</td>
+</tr>
+<tr>
 <td><code>actors</code></td>
 <td>An array with all the actors.</td>
 </tr>
 <tr>
 <td><code>buttons</code></td>
 <td>An array with all the buttons.</td>
+</tr>
+<tr>
+<td><code>sliders</code></td>
+<td>An array with all the sliders.</td>
+</tr>
+<tr>
+<td><code>sounds</code></td>
+<td>An array that holds all sounds.</td>
 </tr>
 <tr>
 <td><code>hasLoaded</code></td>

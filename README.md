@@ -45,16 +45,21 @@ import * as pjs from "./source/modules/index.js"
 ```js
 // Use PizzaJS without a prefix
 // Import global
-import { global, image } from './global.js'
+import { global, image } from './source/modules/global.js'
 // Import functions
-import { initLoaderCheck, canvas, ctx, drawtext, loadImage, loadSound, loadFont, fillRect, setup, start, clear, fitText, measureTextWidth, shakeScreen } from './functions.js';
+import { initLoaderCheck, canvas, ctx, drawtext, loadImage, loadSound, loadFont, fillRect, setup, start, clear, fitText, measureTextWidth, shakeScreen } from './source/modules/functions.js';
 // Import listeners
-import { setupAllEventListeners, setupMouseListener, setupResizeListener, setupKeyboardListener, keyPressed, mouse, pressedKeys } from './listener.js';
+import { setupAllEventListeners, setupMouseListener, setupResizeListener, setupKeyboardListener, keyPressed, mouse, pressedKeys } from './source/modules/listener.js';
 // Import all classes
-import { actor, button, hitbox, hitbox2, rect, sound, slider, timeout } from './classes.js';
+import { actor, button, hitbox, hitbox2, hitboxCircle, rect, sound, slider, timeout } from './source/modules/classes.js';
 // Starts the loadCheck
 initLoaderCheck()
 ```
+## Games made with PizzaJS
+
+| Game Icon | Play | Author | Version |
+|-----------|------|--------|---------|
+| <img src="https://img.itch.zone/aW1nLzEzNzY4MTUxLnBuZw==/315x250%23c/dY6IHU.png" alt="gameIcon" width="128"/> |  [**PLAY**](https://larrocax.itch.io/alien-laser-ray) | [**larrocax**](https://larrocax.itch.io/) | Alpha v1 | 
 
 ## Documentation
 All documentation is provided at the [pizzajs site](https://joaquinlarroca.github.io/pizzajs/)
@@ -63,6 +68,7 @@ All documentation is provided at the [pizzajs site](https://joaquinlarroca.githu
 To request support visit our [discord](https://discord.gg/BmNS5aBEPT)
 
 ## Author
+
 | Avatar | Author |
 |--------|-------------------------|
 | <img src="https://avatars.githubusercontent.com/u/52870198?v=4" alt="avatar" width="32"/> |  [**joaquinlarroca**](https://github.com/joaquinlarroca/) | 
