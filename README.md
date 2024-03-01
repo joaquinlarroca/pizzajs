@@ -51,7 +51,7 @@ import { initLoaderCheck, canvas, ctx, drawtext, loadImage, loadSound, loadFont,
 // Import listeners
 import { setupAllEventListeners, setupMouseListener, setupResizeListener, setupKeyboardListener, keyPressed, mouse, pressedKeys } from './source/modules/listener.js';
 // Import all classes
-import { actor, button, hitbox, hitbox2, rect, sound, slider, timeout } from './classes.js';
+import { actor, button, hitbox, hitbox2, hitboxCircle, rect, sound, slider, timeout } from './source/modules/classes.js';
 // Starts the loadCheck
 initLoaderCheck()
 ```
