@@ -74,4 +74,4 @@ To request support visit our [discord](https://discord.gg/BmNS5aBEPT)
 | <img src="https://avatars.githubusercontent.com/u/52870198?v=4" alt="avatar" width="32"/> |  [**joaquinlarroca**](https://github.com/joaquinlarroca/) | 
 
 ## License
-[GPL-3.0 license](LICENSE)
+[MIT](LICENSE)
