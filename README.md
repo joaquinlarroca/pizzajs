@@ -1,5 +1,5 @@
 
-# ![Logo](/source/icons/favicon32x.png) PizzaJS [![pages-build-deployment](https://github.com/joaquinlarroca/pizzajs/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/joaquinlarroca/pizzajs/actions/workflows/pages/pages-build-deployment) ![GitHub License](https://img.shields.io/github/license/joaquinlarroca/pizzajs) ![GitHub Release](https://img.shields.io/github/v/release/joaquinlarroca/pizzajs)
+# ![Logo](/source/icons/favicon32x.png) PizzaJS [![pages-build-deployment](https://github.com/joaquinlarroca/pizzajs/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/joaquinlarroca/pizzajs/actions/workflows/pages/pages-build-deployment) ![GitHub License](https://img.shields.io/badge/license-MIT-%2397CA01) ![GitHub Release](https://img.shields.io/github/v/release/joaquinlarroca/pizzajs)
 
 
 ## Getting Started
