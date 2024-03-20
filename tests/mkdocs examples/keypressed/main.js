@@ -1,22 +1,22 @@
-import * as pjs from "/source/modules/index.js"
+import { start, setup, clear, ctx, keyPressed, canvas, drawtext } from "/source/modules/index.js"
 import "/source/Addons/DefaultScreenshot.js"
 
-pjs.setup(1920, 1080, 1);
+setup(1920, 1080, 1);
 
 let size = 48
-let x = pjs.canvas.width / 2
-let y = pjs.canvas.height / 2
+let x = canvas.width / 2
+let y = canvas.height / 2
 
 window.addEventListener("pjsUpdate", () => {
-    pjs.clear()
-    if(pjs.keyPressed("w")){
-        pjs.ctx.fillStyle = "#55FF55"
-        pjs.drawtext("W pressed",[x,y],size,"sans-serif","middle","center")
-    }   
-    else{
-        pjs.ctx.fillStyle = "#FF5555"
-        pjs.drawtext("W not pressed",[x,y],size,"sans-serif","middle","center")
+    clear()
+    if (keyPressed("w")) {
+        ctx.fillStyle = "#55FF55"
+        drawtext("W pressed", [x, y], size, "sans-serif", "middle", "center")
+    }
+    else {
+        ctx.fillStyle = "#FF5555"
+        drawtext("W not pressed", [x, y], size, "sans-serif", "middle", "center")
     }
 })
 
-pjs.start()
+start()

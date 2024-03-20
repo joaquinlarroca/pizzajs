@@ -1,14 +1,14 @@
-import * as pjs from "../modules/index.js"
-let bg = new pjs.rect([0, 0], [pjs.canvas.width, pjs.canvas.height], "#1a1a1a")
+import { rect, canvas } from "../modules/index.js"
+let bg = new rect([0, 0], [canvas.width, canvas.height], "#1a1a1a")
 
 let interval = setInterval(() => {
-    if (bg.width != pjs.canvas.width || bg.height != pjs.canvas.height) {
-        bg.width = pjs.canvas.width
-        bg.height = pjs.canvas.height
+    if (bg.width != canvas.width || bg.height != canvas.height) {
+        bg.width = canvas.width
+        bg.height = canvas.height
         clearInterval(interval);
     }
 }, 100)
 window.addEventListener("pjsAfterClear", () => {
-    bg.color = pjs.canvas.style.backgroundColor
+    bg.color = canvas.style.backgroundColor
     bg.draw()
 })

@@ -17,36 +17,37 @@ loadImage(name,url);
 
 !!! Example
     ```js
-    import * as pjs from "/source/modules/index.js"
+    import { start, setup, clear, canvas, actor, loadImage, image } from "/source/modules/index.js"
+    import "/source/Addons/DefaultScreenshot.js"
 
-    pjs.setup(1920, 1080, 1);
+    setup(1920, 1080, 1);
 
     let size = 256
-    let x = pjs.canvas.width / 2 - size/2
-    let y = pjs.canvas.height / 2 - size/2
+    let x = canvas.width / 2 - size/2
+    let y = canvas.height / 2 - size/2
 
-    // pjs.loadImage("bunny,"bunny.png")
+    // loadImage("bunny,"bunny.png")
     // All classes that have an image or may contain one -
     // already have implemented the loadImage function.
 
-    let actor = new pjs.actor("bunny.png", [x, y], [size, size], [0, 0])
+    let actor1 = new actor("/source/images/bunny.png", [x, y], [size, size], [0, 0])
 
     // Using name
-    //let actor = new pjs.actor(pjs.image["bunny"], [x, y], [size, size], [0, 0])
+    //let actor = new actor(image["bunny"], [x, y], [size, size], [0, 0])
+
 
     window.addEventListener("pjsUpdate", () => {
-        pjs.clear()
-        actor.draw()
+        clear()
+        actor1.draw()
     })
 
-    pjs.start()
+    start()
     ```
 
-    ![Image](./img/loadimage.png)
+    ![bunny.png](./img/bunny.png)
 
-Bunny.png
 
-![bunny.png](./img/bunny.png)
+
 
 
 ## **Load Sound**
@@ -58,7 +59,7 @@ loadSound(url);
 ```
 !!! info
 
-    The `loadSound` function is already implemented into the sound class from PizzaJS.
+    The `loadSound` function is already implemented into the sound's classes from PizzaJS.
 
 
 | Parameters | Type        | Description                                                                 | Default Value |
@@ -94,19 +95,18 @@ fillRect(x, y, width, height);
 
 !!! Example
     ```js
-    import * as pjs from "/source/modules/index.js"
-
-
-    pjs.setup(1920, 1080, 1);
-
+    import { start, setup, clear, ctx, fillRect } from "/source/modules/index.js"
+    import "/source/Addons/DefaultScreenshot.js"
+    
+    setup(1920, 1080, 1);
+    
     window.addEventListener("pjsUpdate", () => {
-        pjs.clear();
-        pjs.ctx.fillStyle = "red";
-        pjs.fillRect(64,64,128,128);
-        // Draws a rect form 64,64 with a width and height of 128
+        clear();
+        ctx.fillStyle = "red";
+        fillRect(64, 64, 128, 128);
     })
-
-    pjs.start()
+    
+    start()
     ```
 
     ![Image](./img/fillrect.png)

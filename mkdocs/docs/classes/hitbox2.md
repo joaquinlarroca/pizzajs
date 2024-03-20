@@ -1,3 +1,7 @@
+```js
+new hitbox2(x, y, width, height)
+```
+
 | Parameters | Type        | Description                                                                 | Default Value |
 |------------|-------------|-----------------------------------------------------------------------------|---------------|
 | x          | `number`    |  x position for the hitbox                                                  | undefined     |
@@ -12,6 +16,10 @@
 
 | Attributes  | Description                                           |
 |-------------|-------------------------------------------------------|
+| x           |  x position for the hitbox                            |
+| y           |  y position for the hitbox                            |
+| width       |  width of the hitbox                                  |
+| height      |  height of the hitbox                                 |
 | `color`     | The color of the hitbox.                              |
 | `lineWidth` | The width of the stroke for drawing the hitbox.       |
 | `params`    | Object for handling update instructions.              |

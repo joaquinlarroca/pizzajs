@@ -1,4 +1,6 @@
-url, playbackRate = 1.0, volume = 1.0, loop = false
+```js
+new sound(url, playbackRate, volume, loop)
+```
 
 | Parameters          | Type      | Description                                       | Default Value  |
 |---------------------|-----------|---------------------------------------------------|----------------|

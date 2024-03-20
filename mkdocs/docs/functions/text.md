@@ -20,21 +20,21 @@ drawtext(text, [x, y], fontSize, fontFamily, baseline, textAlign, angle, alpha);
 
 !!! Example
     ```js
-    import * as pjs from "/source/modules/index.js"
+    import { start, setup, clear, ctx, drawtext, loadFont, canvas } from "/source/modules/index.js"
+    import "/source/Addons/DefaultScreenshot.js"
 
-    pjs.setup(1920, 1080, 1,true);
+    setup(1920, 1080, 0.9)
 
-    // Calculate the middle of the canvas
-    let x = pjs.canvas.width / 2;
-    let y = pjs.canvas.height / 2;
+    let x = canvas.width / 2
+    let y = canvas.height / 2
 
     window.addEventListener("pjsUpdate", () => {
-        pjs.clear(); // Clear the canvas
-        pjs.ctx.fillStyle = "white"; // Change color to white
-        pjs.drawtext("Hello, world", [x, y], 64, "sans-serif", "middle", "center", 15, 1);
+        clear()
+        ctx.fillStyle = "white"
+        drawtext("Hello, world", [x, y], 64, "sans-serif", "middle", "center", 15, 1);
     })
 
-    pjs.start();
+    start()
     ```
 
     ![Image](./img/drawtext.png)
@@ -54,26 +54,24 @@ loadFont(fontFamily, fontURL);
 
 !!! Example
     ```js
-    import * as pjs from "/source/modules/index.js"
-    
-    pjs.setup(1920, 1080, 1,true);
-    
-    //Load the font and set it as "FiraCode"
-    pjs.loadFont("FiraCode","/source/fonts/FiraCode/FiraCode-Regular.ttf");
+    import { start, setup, clear, ctx, drawtext, loadFont, canvas } from "/source/modules/index.js"
+    import "/source/Addons/DefaultScreenshot.js"
     
     
-    let x = pjs.canvas.width / 2;
-    let y = pjs.canvas.height / 2;
+    setup(1920, 1080, 0.9)
+    
+    loadFont("FiraCode", "/source/fonts/FiraCode/FiraCode-Regular.ttf")
+    
+    let x = canvas.width / 2
+    let y = canvas.height / 2
     
     window.addEventListener("pjsUpdate", () => {
-        pjs.clear();
-        pjs.ctx.fillStyle = "white";
-    
-        // Change the fontFamily to FiraCode
-        pjs.drawtext("Hello, world", [x, y], 64, "FiraCode", "middle", "center", 15, 1);
+        clear()
+        ctx.fillStyle = "white"
+        drawtext("Hello, world", [x, y], 64, "FiraCode", "middle", "center", 15, 1);
     })
     
-    pjs.start();
+    start()
     ```
     
     ![Image](./img/fontFamily.png)

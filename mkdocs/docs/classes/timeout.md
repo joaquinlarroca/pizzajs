@@ -1,3 +1,6 @@
+```js
+new timeout(timeMS)
+```
 
 | Parameters          | Type      | Description                                           | Default Value  |
 |---------------------|-----------|-------------------------------------------------------|----------------|
@@ -8,8 +11,8 @@
 
 | Attributes       | Description                                                                    |
 |------------------|--------------------------------------------------------------------------------|
-| `timeMS`         | The time in ms of the delay before it can be started.                          |
-| `active`         | Indicates whether the timeout is finished or not started and when its running. |
+| `time`           | The time in ms of the delay before it can be started.                          |
+| `active`         | Indicates whether the timeout is active or not. |
 | `timeElapsed`    | Holds the time elapsed since start() up to timeMS in milliseconds.              |
 | `timeLeft`       | The remaining time in milliseconds before the timeout completes.              |
 | `updateTime`     | The interval in milliseconds for updating `timeElapsed` and `timeLeft`.              |
@@ -25,35 +28,37 @@ The start() method is responsible for starting the timeout (setting active to tr
 !!! Example
     ```js
 
-    import * as pjs from "/source/modules/index.js"
+    import { start, setup, clear, timeout, canvas, drawtext, ctx, mouse } from "/source/modules/index.js"
+    import "/source/Addons/DefaultScreenshot.js"
 
-    pjs.setup(1920, 1080, 1);
+    setup(1920, 1080, 1);
 
     let size = 48
-    let x = pjs.canvas.width / 2 
-    let y = pjs.canvas.height / 2
+    let x = canvas.width / 2
+    let y = canvas.height / 2
 
-    let MyTimeout = new pjs.timeout(1500)
+    let MyTimeout = new timeout(1500)
 
     window.addEventListener("pjsUpdate", () => {
-        pjs.clear()
-        if(pjs.mouse.click && !MyTimeout.active){
+        clear()
+        if (mouse.click && !MyTimeout.active) {
             MyTimeout.start()
         }
-        if(MyTimeout.active){
-            pjs.ctx.fillStyle = "#FF0000"
+        if (MyTimeout.active) {
+            ctx.fillStyle = "#FF0000"
         }
-        else{
-            pjs.ctx.fillStyle = "#00FF00"
+        else {
+            ctx.fillStyle = "#00FF00"
         }
-        pjs.drawtext(MyTimeout.active,[x,y],size,"sans-serif","middle","center")
+        drawtext(MyTimeout.active, [x, y], size, "sans-serif", "middle", "center")
+        drawtext(Math.round(MyTimeout.timeLeft / 100) / 10, [x, y + size], size, "sans-serif", "middle", "center")
     })
 
-    pjs.start()
+    start()
     ```
     Before Clicking
     ![Image](./img/timeout2.png)
-    After Clicking
+    After clicked and 1 second before reseting
     ![Image](./img/timeout1.png)
-    After 1.5 seconds
+    After 1.5 seconds reseted again
     ![Image](./img/timeout2.png)

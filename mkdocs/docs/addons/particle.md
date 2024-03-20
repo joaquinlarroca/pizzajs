@@ -1,7 +1,7 @@
-## Particle Creator: [https://joaquinlarroca.github.io/PizzaJS-particle-creator/](https://joaquinlarroca.github.io/PizzaJS-particle-creator/)
+Particle Creator (Beta v1.1): [https://joaquinlarroca.github.io/PizzaJS-particle-creator/](https://joaquinlarroca.github.io/PizzaJS-particle-creator/)
 
 ```js
-import * as p from "./source/Addons/particle.js"
+import { ParticleGenerator, Particle } from "./source/Addons/particle.js"
 ```
 
 ## Particle 

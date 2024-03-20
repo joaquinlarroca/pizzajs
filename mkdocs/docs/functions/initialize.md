@@ -19,10 +19,10 @@ setup(width, height, marginMultiplier, listeners);
 
 !!! Example
     ```js
-    import * as pjs from "/source/modules/index.js"
+    import { start, setup, clear } from "/source/modules/index.js"
+    import "/source/Addons/DefaultScreenshot.js"
 
-    pjs.setup(1920, 1080, 1,true);
-
+    setup(1920, 1080, 1, false)
     ```
 
     ![Image](./img/setup.png)
@@ -37,17 +37,17 @@ start();
 
 !!! Example
     ```js
-    import * as pjs from "/source/modules/index.js"
+    import { start, setup, clear } from "/source/modules/index.js"
+    import "/source/Addons/DefaultScreenshot.js"
     
-    pjs.setup(1920, 1080, 1,true);
+    setup(1920, 1080, 1, false)
     
-    //Main Loop
     window.addEventListener("pjsUpdate", (e) => {
-        const { deltaTime, fps } = e.detail // Get current deltaTime and FrameRate
-        //Code
+        const { deltaTime, fps } = e.detail // Get current deltaTime and FrameRate. This can be replaced by time.delta and 1 / time.delta
+        clear()
     })
     
-    pjs.start();
+    start()
     
     ```
 

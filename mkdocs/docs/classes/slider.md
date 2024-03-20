@@ -1,3 +1,7 @@
+```js
+new slider(background, thumb, [x, y], [width, height], thumbwidth, [minpercentage, maxpercentage], sliderfill, currentPercentage)
+```
+
 | Parameters                     | Type      | Description                                                          | Default Value  |
 |--------------------------------|-----------|----------------------------------------------------------------------|----------------|
 | background                     | `string`  | Image URL or color code representing the background of the slider.   | "color: #FF0000"   |
@@ -25,15 +29,16 @@
 | `thumb.stroke.width`           |  A numerical value representing the width of the stroke in pixels.  |
 | `thumb.blocked`            | Boolean that blocks movement if its true                             |
 | `thumb.radius`                  | The amount of rounding corners use array for changing independently each corner or a number to change all corners.                    |
+| `sliderBgColor              | Holds the color to fill in the percentage.                        |
 | `x, y`                    | Current position of the slider.                                      |
 | `maxpercentage`           | The maximum percentage the slider can reach.                         |
 | `minpercentage`           | The minimum percentage the slider can reach.                         |
 | `percentage`              | Current percentage the slider is in.                                 |
-| `drag`                    | Object for handling dragging functionality.                          |
+| `drag`                    | Object for handling dragging functionality. More info at `template/drag` in github.                          |
 | `hitbox`                  | Hitbox object for collision detection.                               |
 | `width, height`           | Dimensions of the slider.                                            |
-| `pos`                     | Position coordinates.                                                |
-| `anglex, angley`          | Position coordinates used for angle calculations.                    |
+| `pos`                     | Position coordinates of the actor in an array x: [0], y: [1].                                                |
+| `anglex, angley`          | Position coordinates used for positioning calculations. Has nothing in common with angle !                    |
 | `angle`                   | Angle of rotation for the slider (in degrees).                       |
 | `alpha`                   | Transparency of the actor.                                           |
 | `radius`                  | The amount of rounding corners use array for changing independently each corner or a number to change all corners.                    |
@@ -52,25 +57,25 @@ The draw() method is responsible for rendering the slider onto the canvas based 
 
 !!! Example
     ```js
-    import * as pjs from "/source/modules/index.js"
+    import { start, setup, clear, slider, canvas, drawtext, ctx } from "/source/modules/index.js"
+    import "/source/Addons/DefaultScreenshot.js"
     
-    pjs.setup(1920, 1080, 1);
+    setup(1920, 1080, 1);
     
     let size = 256
-    let x = pjs.canvas.width / 2 - size
-    let y = pjs.canvas.height / 2 - size/4
+    let x = canvas.width / 2 - size
+    let y = canvas.height / 2 - size / 4
     
-    let MySlider = new pjs.slider("color:#000000", "color:#FFFFFF", [x, y], [size*2, size/2], size/4, [0, 100],"#FF0000", 50)
+    let MySlider = new slider("color:#3a3a3a", "color:#FFFFFF", [x, y], [size * 2, size / 2], size / 4, [0, 100], "#ff0000", 50)
     
     window.addEventListener("pjsUpdate", () => {
-        pjs.clear()
+        clear()
         MySlider.draw()
-
-        // Show current percentage
-        pjs.drawtext(MySlider.percentage,[0,0],size/4)
+        ctx.fillStyle = "#FFFFFF"
+        drawtext(MySlider.percentage, [size / 8, size / 8], size / 4)
     })
     
-    pjs.start()
+    start()
     ```
 
     Untouched

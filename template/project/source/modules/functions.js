@@ -1,4 +1,4 @@
-import { global } from "./global.js"
+import { global, time } from "./global.js"
 import { setupAllEventListeners } from "./listener.js";
 /**
  * Triggers a loader animation or hide effect for a specific loader element.
@@ -130,7 +130,7 @@ export function fitText(text, width, height, fontFamily) {
             fontSize -= 0.1;
             ctx.font = `${fontSize}px ${fontFamily}`;
             loopTime -= 1
-            if(loopTime <= 0){
+            if (loopTime <= 0) {
                 break
             }
         }
@@ -231,6 +231,16 @@ export function clear() {
     window.dispatchEvent(new Event('pjsAfterClear'));
 }
 /**
+ * Interpolates between two values based on an interpolation factor.
+ * @param {number} startValue - The starting value.
+ * @param {number} endValue - The ending value.
+ * @param {number} interpolation - The interpolation factor. Should be between 0 and 1.
+ * @returns {number} The interpolated value between startValue and endValue.
+ */
+export function lerp(startValue, endValue, interpolation) {
+    return startValue + (endValue - startValue) * interpolation;
+}
+/**
  * Draws a filled rectangle.
  * 
  * @param {number} x - The x-coordinate of the starting point of the rectangle (default: 0).
@@ -249,9 +259,13 @@ export function start() {
         let timestamp = performance.now();
 
         function updateAnimationFrame(currentTimestamp) {
-            global.deltaTime = (currentTimestamp - timestamp) / 1000;
+            time.frameCount += 1
+            let delta = (currentTimestamp - timestamp) / 1000
+            time.delta = delta;
+            time.time += delta
+            global.fps = Math.round(1 / time.delta)
             timestamp = currentTimestamp;
-            notifyUpdate(global.deltaTime, Math.round(1 / global.deltaTime));
+            notifyUpdate(time.delta, global.fps);
             requestAnimationFrame(updateAnimationFrame);
         }
         requestAnimationFrame(updateAnimationFrame);

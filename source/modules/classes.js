@@ -27,7 +27,7 @@ export class hitbox {
         else {
             this.color = color;
         }
-        this.params = "waiting updateDimensions()"
+        this.params = "call updateDimensions() to update value"
     }
     updateDimensions() {
         this.params = Math.round(this.left) + " : " + Math.round(this.right) + "  :: " + Math.round(this.top) + "  : " + Math.round(this.bottom)
@@ -76,7 +76,7 @@ export class hitbox2 {
         this.height = height
         this.lineWidth = (global.setupWidth + global.setupHeight) / 750
         this.color = `rgb(${Math.round(Math.random() * 225) + 30},${Math.round(Math.random() * 225) + 30},${Math.round(Math.random() * 225) + 30})`
-        this.params = "To update value call any function on the hitbox object"
+        this.params = "call updateDimensions() to update value"
         this.left = this.x
         this.right = this.x + this.width
         this.top = this.y
@@ -188,7 +188,7 @@ export class actor {
             }
 
             this.conditions = {
-                canExitCanvas: false,
+                canExitCanvas: true,
                 isDraggable: false,
             }
 
@@ -338,7 +338,7 @@ export class actor {
     angletopoint(point) {
         this.halfwidth = this.width / 2
         this.halfheight = this.height / 2
-        this.angle = Math.atan2(point[1] - this.y + this.halfheight, point[0] - this.x + this.halfwidth) * (180 / Math.PI)
+        this.angle = Math.atan2(point[1] - (this.y + this.halfheight), point[0] - (this.x + this.halfwidth)) * (180 / Math.PI)
     }
     changeImage(string) {
         string = string.split(":")
@@ -815,13 +815,15 @@ export class slider {
 
         this.anglex = this.thumb.x + this.thumb.width / 2
         this.angley = this.thumb.y + this.thumb.height / 2
+
+        this.percentage = Math.max(Math.min(this.percentage, this.maxpercentage), this.minpercentage)
         ctx.save();
         ctx.translate(this.anglex, this.angley);
         ctx.rotate(0.017453292519943295 * this.angle);
         ctx.globalAlpha = this.alpha;
 
         if (this.BGusingColor) {
-            ctx.fillStyle = this.color1
+            ctx.fillStyle = this.BGcolor
             ctx.beginPath();
             ctx.roundRect(-this.thumb.width / 2, -this.height / 2, this.thumb.width + this.width, this.height, this.radius);
             if (this.stroke.active) {
@@ -881,7 +883,7 @@ export class slider {
 
 
         ctx.restore();
-        ctx.fillStyle = "#000000"
+
     }
     changeImage(stringbackground, stringthumb) {
         stringbackground = stringbackground.split(":")
@@ -1007,4 +1009,35 @@ export class sound {
             global.error("c", 15);
         }
     }
-} 
+}
+export class sound2 {
+    constructor(src, playbackRate = 1.0, volume = 1) {
+        global.sounds.push(this)
+        loadSound(src)
+        this.playbackRate = playbackRate
+        this.volume = volume
+        this.audioSrc = src;
+        this.audioClones = [];
+    }
+
+    play() {
+        let audio = new Audio(this.audioSrc);
+        audio.playbackRate = this.playbackRate
+        audio.volume = this.volume
+        audio.play();
+        this.audioClones.push(audio);
+
+        // Remove audio clone from the array when it ends
+        audio.addEventListener('ended', () => {
+            this.audioClones = this.audioClones.filter(clone => clone !== audio);
+        });
+    }
+
+    stopAll() {
+        this.audioClones.forEach(clone => {
+            clone.pause();
+            clone.currentTime = 0;
+        });
+        this.audioClones = [];
+    }
+}

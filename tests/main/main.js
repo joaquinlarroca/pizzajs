@@ -1,15 +1,16 @@
-import * as pjs from "/source/modules/index.js"
-pjs.setup(500, 500, 0.9);
-pjs.loadFont("FiraCode", "/source/fonts/FiraCode/FiraCode-Regular.ttf")
+import { global, start, setup, ctx, canvas, clear, shakeScreen, time, drawtext, loadFont, button, slider, actor, keyPressed } from "/source/modules/index.js"
+import "/source/Addons/mouseInfo.js"
+setup(500, 500, 0.9);
+loadFont("FiraCode", "/source/fonts/FiraCode/FiraCode-Regular.ttf")
 
-let a = new pjs.actor("color: #000000", [200, 114], [32, 32], [0, 0])
-let b = new pjs.actor(undefined, [32, 114], [50, 50], [0, 0])
+let a = new actor("color: #000000", [200, 114], [32, 32], [0, 0])
+let b = new actor(undefined, [32, 114], [50, 50], [0, 0])
 
-let c = new pjs.button("color: rgba(0,0,0,0.5)", [26, 32], [128, 50], "Click", "FiraCode", "#FFFFFF", 25, 1000)
+let c = new button("color: rgba(0,0,0,0.5)", [26, 32], [128, 50], "Click", "FiraCode", "#FFFFFF", 25, 1000)
 
-let d = new pjs.slider("color: rgba(0,0,0,0.5)", "color: rgb(122.5,122.5,122.5)", [186, 32], [128, 50], 15, [-75, 75], "#FFFFFF", 0)
+let d = new slider("color: rgba(0,0,0,0.5)", "color: rgb(122.5,122.5,122.5)", [186, 32], [128, 50], 15, [-75, 75], "#FFFFFF", 0)
 
-let e = new pjs.button("color: rgba(0,0,0,0.5)", [346, 32], [128, 50], "0", "FiraCode", "#FFFFFF", 25, 10)
+let e = new button("color: rgba(0,0,0,0.5)", [346, 32], [128, 50], "0", "FiraCode", "#FFFFFF", 25, 10)
 
 c.stroke.active = true
 c.stroke.width = 2
@@ -33,18 +34,17 @@ a.conditions.isDraggable = true
 b.conditions.isDraggable = true
 
 
-window.addEventListener("pjsUpdate", (info) => {
-    const { deltaTime, fps } = info.detail
-    pjs.clear()
+window.addEventListener("pjsUpdate", () => {
+    clear()
     a.draw()
     b.draw()
     c.draw()
     d.draw()
     e.draw()
-    a.angle += d.percentage * deltaTime * 2
-    if (pjs.keyPressed("space")) {
-        a.move(100 * deltaTime)
-        pjs.shakeScreen(2, 20)
+    a.angle += d.percentage * time.delta * 2
+    if (keyPressed("space")) {
+        a.move(100 * time.delta)
+        shakeScreen(2, 20)
     }
 
     e.setText("   " + d.percentage + "   ", "FiraCode")
@@ -67,9 +67,9 @@ window.addEventListener("pjsUpdate", (info) => {
             a.changeImage("color:#FFFFFF")
         }
     }
-    pjs.ctx.fillStyle = "white"
-    pjs.drawtext("FPS: " + fps, [8, 8], 16, "FiraCode")
-    pjs.ctx.fillStyle = "#0FFFF0"
-    pjs.drawtext("Use space to move", [pjs.canvas.width - 8, 8], 16, "FiraCode", "top", "right")
+    ctx.fillStyle = "white"
+    drawtext("FPS: " + global.fps, [8, 8], 16, "FiraCode")
+    ctx.fillStyle = "#0FFFF0"
+    drawtext("Use space to move", [canvas.width - 8, 8], 16, "FiraCode", "top", "right")
 })
-pjs.start()
+start()

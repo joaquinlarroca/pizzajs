@@ -1,4 +1,8 @@
 
+```js
+new actor(string, [x, y], [width, height], [offsetX, offsetY])
+```
+
 | Parameters          | Type      | Description                                       | Default Value  |
 |---------------------|-----------|---------------------------------------------------|----------------|
 | string              | `string`  | Image URL or color code format.                   | "color: #FFFFFF"   |
@@ -14,16 +18,17 @@
 | `usingColor`              | Indicates whether the actor is using a color instead of an image. |
 | `color`                   | Holds the color value if the actor is using a color.              |
 | `conditions`              | Object holding various conditions for the actor.                  |
-| `scale`                   | The scale of the actor in x and y.                                |
+| `conditions.canExitCanvas`| Tells wether the actor can leave the canvas or not. default: true |
+| `conditions.isDraggable`  | Whether you can drag it or not. default: false                    |
+| `scale`                   | The scale of the actor in an array x: [0], y: [1].                |
 | `x, y`                    | Current position of the actor.                                    |
 | `offsetX, offsetY`        | Offsets used for positioning.                                     |
-| `drag`                    | Object for handling dragging functionality.                       |
+| `drag`                    | Object for handling dragging functionality. More info at `template/drag` in github. |
 | `hitbox`                  | Hitbox object for collision detection.                            |
 | `width, height`           | Dimensions of the actor.                                          |
 | `halfwidth, halfheight`   | Half of the width and height of the actor.                        |
-| `pos`                     | Position coordinates of the actor.                                |
-| `anglex, angley`          | Position coordinates used for angle calculations.                 |
-| `scale`          | A two element array that determine its scaling on x for the first element and on y for the second.               |
+| `pos`                     | Position coordinates of the actor in an array x: [0], y: [1].     |
+| `anglex, angley`          | Position coordinates used for positioning calculations. Has nothing in common with angle ! |
 | `angle`                   | Angle of rotation for the actor (in degrees).                     |
 | `alpha`                   | Transparency of the actor.                                        |
 | `radius`                  | The amount of rounding corners use array for changing independently each corner or a number to change all corners.                    |
@@ -41,22 +46,23 @@ The draw() method is responsible for rendering the actor onto the canvas based o
 !!! Example
     ```js
 
-    import * as pjs from "/source/modules/index.js"
+    import { start, setup, clear, canvas, actor } from "/source/modules/index.js"
+    import "/source/Addons/DefaultScreenshot.js"
 
-    pjs.setup(1920, 1080, 1);
+    setup(1920, 1080, 1);
 
     let size = 256
-    let x = pjs.canvas.width / 2 - size/2
-    let y = pjs.canvas.height / 2 - size/2
+    let x = canvas.width / 2 - size/2
+    let y = canvas.height / 2 - size/2
 
-    let MyActor = new pjs.actor("/source/icons/PizzaJS256x.png", [x, y], [size, size], [0, 0])
+    let actor1 = new actor("/source/images/bunny.png", [x, y], [size, size], [0, 0])
 
     window.addEventListener("pjsUpdate", () => {
-        pjs.clear()
-        MyActor.draw() 
+        clear()
+        actor1.draw()
     })
 
-    pjs.start()
+    start()
     ```
 
     ![Image](./img/actor-draw.png)
@@ -70,30 +76,31 @@ The drawAnchorPoint() method renders an anchor point for the actor on the canvas
 
 !!! Example
     ```js
-    import * as pjs from "/source/modules/index.js"
+    import { start, setup, clear, canvas, actor } from "/source/modules/index.js"
+    import "/source/Addons/DefaultScreenshot.js"
 
-    pjs.setup(1920, 1080, 1);
+    setup(1920, 1080, 1);
 
     let size = 256
-    let x = pjs.canvas.width / 2 - size/2
-    let y = pjs.canvas.height / 2 - size/2
+    let x = canvas.width / 2 - size/2
+    let y = canvas.height / 2 - size/2
 
-    let MyActor = new pjs.actor("/source/icons/PizzaJS256x.png", [x, y], [size, size], [0, 0])
+    let actor1 = new actor("/source/images/bunny.png", [x, y], [size, size], [0, 0])
 
     window.addEventListener("pjsUpdate", () => {
-        pjs.clear()
-        MyActor.draw()
-        MyActor.drawAnchorPoint() // Draw the actor anchor point
+        clear()
+        actor1.draw()
+        actor1.drawAnchorPoint()
     })
 
-    pjs.start()
+    start()
     ```
 
     ![Image](./img/actor-anchor.png)
 
 ### `angletopoint(point)`
 
-The method determines the angle between the actor's current position and the specified target point and makes the actor angle toward the point, considering the actor's center as the reference except there is an offset.
+The method determines the angle between the actor's current position and the specified target point and makes the actor angle toward the point, considering the actor's center as the reference for now until the offset is added in.
 
 | Parameters          | Type      | Description                                       | Default Value  |
 |---------------------|-----------|---------------------------------------------------|----------------|

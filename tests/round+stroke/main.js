@@ -1,36 +1,36 @@
-import * as pjs from "/source/modules/index.js"
+import { start, setup, clear, button, slider, actor } from "/source/modules/index.js"
 import "/source/Addons/DefaultScreenshot.js"
-pjs.setup(1920, 1080, 1);
+setup(500, 500, 1);
 
-let actor = new pjs.actor(undefined, [32, 114], [50, 50], [0, 0])
+let actora = new actor(undefined, [32, 114], [50, 50], [0, 0])
 
-let button = new pjs.button("color: #000000", [26, 32], [128, 50], "Click", "#FFFFFF", 25, 500)
+let buttona = new button("color: #000000", [26, 32], [128, 50], "Click", "sans-serif", "#FFFFFF", 25, 500)
 
-let slider = new pjs.slider("color: #000000", "color: rgb(122.5,122.5,122.5)", [186, 32], [128, 50], 40, [0, 100], "#FFFFFF", 50)
+let slidera = new slider("color: #000000", "color: rgb(122.5,122.5,122.5)", [186, 32], [128, 50], 40, [0, 100], "#FFFFFF", 50)
 
-actor.stroke.active = true
-actor.stroke.color = "#FF00FF"
-actor.stroke.width = 2
-actor.radius = [25, 5, 5, 25]
+actora.stroke.active = true
+actora.stroke.color = "#FF00FF"
+actora.stroke.width = 2
+actora.radius = [25, 5, 5, 25]
 
-button.stroke.active = true
-button.stroke.width = 2
-button.radius = 5
+buttona.stroke.active = true
+buttona.stroke.width = 2
+buttona.radius = 5
 
-slider.stroke.active = true
-slider.stroke.width = 2
-slider.radius = 5
+slidera.stroke.active = true
+slidera.stroke.width = 2
+slidera.radius = 5
 
-slider.thumb.stroke.active = true
-slider.thumb.stroke.width = 10
-slider.thumb.stroke.color = "#000000"
-slider.thumb.radius = 25
-slider.thumb.height = 40
+slidera.thumb.stroke.active = true
+slidera.thumb.stroke.width = 10
+slidera.thumb.stroke.color = "#000000"
+slidera.thumb.radius = 25
+slidera.thumb.height = 40
 
 window.addEventListener("pjsUpdate", () => {
-    pjs.clear()
-    actor.draw()
-    button.draw()
-    slider.draw()
+    clear()
+    actora.draw()
+    buttona.draw()
+    slidera.draw()
 })
-pjs.start()
+start()

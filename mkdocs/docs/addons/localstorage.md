@@ -1,6 +1,6 @@
 Save data to localStorage
 ```js
-import "./source/Addons/localstorage.js"
+import { localStorageGet, localStorageSet } from './source/Addons/localstorage.js';
 ```
 ## Set 
 Saves one value with a specified name. Returns `value`

@@ -1,7 +1,4 @@
-import { global } from '/source/modules/global.js'
-import { initLoaderCheck, canvas, setup, start, clear } from '/source/modules/functions.js';
-import { button, slider } from '/source/modules/classes.js';
-initLoaderCheck()
+import { canvas, setup, start, clear, button, slider, global } from "/source/modules/index.js"
 setup(454, 454, 0.9);
 canvas.style.backgroundColor = "#FFF"
 
@@ -74,7 +71,6 @@ let array4 = [
 ]
 
 window.addEventListener("pjsUpdate", (e) => {
-    const { deltaTime, fps } = e.detail
     clear()
     arraySliderDisplay.text.text = arraySlider.percentage
     rgbdisplay.text.text = `rgb(${RSlider.percentage},${GSlider.percentage},${BSlider.percentage})`

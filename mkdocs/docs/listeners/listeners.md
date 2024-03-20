@@ -4,9 +4,12 @@
 |---------------------------|----------------------------------------------------------------------|
 | `x`                       | Indicates the mouse position in the x axis.                          |
 | `y`                       | Indicates the mouse position in the y axis.|
+| `show`                    | Indicates if the mouse should be shown or not. default: true.|
 | `pos`                     | An array with x and y. |
+| `preventRightClick`       | Whether it should prevent contexMenu or not. |
 | `click`                   | Is true if the mouse is being clicked and its false when its not clicked. (Supports touch but no dragging) |
-| `objectSelected`          | It has the object / class currently selected. (To understand more read `template/dragTemplate.js`)|
+| `holding`                 | Indicates if the mouse is being hold |
+| `objectSelected`          | It has the object / class currently selected. (To understand more via discord or template code `template/dragTemplate.js`)|
 
 !!! example
     ```js
@@ -14,7 +17,9 @@
     ```
     output: [125,253]
 
-
+## Prevent Keys
+An array that hold all keys that the listener shouldn't be listening.
+default  value: ["F1" ,"F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12"]
 ## Key pressed
 ```js
 keyPressed(key);
@@ -28,27 +33,28 @@ Return true if the key given is being pressed.
 
 !!! example
     ```js
-    import * as pjs from "/source/modules/index.js"
+    import { start, setup, clear, ctx, keyPressed, canvas, drawtext } from "/source/modules/index.js"
+    import "/source/Addons/DefaultScreenshot.js"
 
-    pjs.setup(1920, 1080, 1);
+    setup(1920, 1080, 1);
 
     let size = 48
-    let x = pjs.canvas.width / 2
-    let y = pjs.canvas.height / 2
+    let x = canvas.width / 2
+    let y = canvas.height / 2
 
     window.addEventListener("pjsUpdate", () => {
-        pjs.clear()
-        if(pjs.keyPressed("w")){
-            pjs.ctx.fillStyle = "#55FF55"
-            pjs.drawtext("W pressed",[x,y],size,"sans-serif","middle","center")
-        }   
-        else{
-            pjs.ctx.fillStyle = "#FF5555"
-            pjs.drawtext("W not pressed",[x,y],size,"sans-serif","middle","center")
+        clear()
+        if (keyPressed("w")) {
+            ctx.fillStyle = "#55FF55"
+            drawtext("W pressed", [x, y], size, "sans-serif", "middle", "center")
+        }
+        else {
+            ctx.fillStyle = "#FF5555"
+            drawtext("W not pressed", [x, y], size, "sans-serif", "middle", "center")
         }
     })
 
-    pjs.start()
+    start()
     ```
     Not pressing W
     ![Image](./img/kpnw.png)
@@ -61,15 +67,15 @@ When putting `setup(1920,1080,1,false)` you are disabling automatic initializati
 
 !!! Example
     ```js
-    import * as pjs from "/source/modules/index.js"
+    import { start, setupAllEventListeners, setupMouseListener, setupKeyboardListener, setupResizeListener } from "/source/modules/index.js"
 
-    pjs.setup(1920, 1080, 1, false);
+    setup(1920, 1080, 1, false); // start a canvas without the event listeners
 
-    pjs.setupAllEventListeners()
+    setupAllEventListeners() // Initialize all event listeners
 
-    // pjs.setupMouseListener() for setting up only the mouse.
+    // setupMouseListener() for setting up only the mouse.
 
-    // pjs.setupKeyboardListener() for setting up only the keyboard and keyPressed function.
+    // setupKeyboardListener() for setting up only the keyboard and keyPressed function.
 
-    // pjs.setupResizeListener() for setting up the automatic resize of the game when the windows is resized.
+    // setupResizeListener() for setting up the automatic resize of the game when the windows is resized.
     ```

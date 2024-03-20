@@ -1,11 +1,15 @@
-import { global, image } from './global.js'
-import { initLoaderCheck, canvas, ctx, drawtext, loadImage, loadSound, loadFont, fillRect, setup, start, clear, fitText, measureTextWidth, shakeScreen } from './functions.js';
-import { setupAllEventListeners, setupMouseListener, setupResizeListener, setupKeyboardListener, keyPressed, mouse, pressedKeys } from './listener.js';
-import { actor, button, hitbox, hitbox2, hitboxCircle, rect, sound, slider, timeout } from './classes.js';
+import { global, time, image } from './global.js'
+import { initLoaderCheck, lerp, canvas, ctx, drawtext, loadImage, loadSound, loadFont, fillRect, setup, start, clear, fitText, measureTextWidth, shakeScreen } from './functions.js';
+import { setupAllEventListeners, setupMouseListener, setupResizeListener, setupKeyboardListener, keyPressed, mouse, pressedKeys, preventKeys } from './listener.js';
+import { actor, button, hitbox, hitbox2, hitboxCircle, rect, sound, slider, timeout, sound2 } from './classes.js';
 
 initLoaderCheck()
 
 export {
+    lerp,
+    preventKeys,
+    sound2,
+    time,
     fitText,
     global,
     ctx,

@@ -1,4 +1,4 @@
-site_name: PizzaJS
+site_name: PizzaJS Docs
 repo_name: joaquinlarroca/pizzajs
 repo_url: https://github.com/joaquinlarroca/pizzajs
 
@@ -18,6 +18,7 @@ nav:
     - Slider: classes/slider.md
     - Timeout: classes/timeout.md
     - Sound: classes/sound.md
+    - Sound2: classes/sound2.md
   - Listeners: listeners/listeners.md
   - Addons:
     - MiniMontior: addons/miniMonitor.md
@@ -25,11 +26,35 @@ nav:
     - DefaultScreenshot: addons/DefaultScreenshot.md
     - Particle: addons/particle.md
     - LocalStorage: addons/localstorage.md
+markdown_extensions: 
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      options:
+        custom_icons:
+          - overrides/.icons
+  - pymdownx.highlight:
+      anchor_linenums: true
+      linenums: true
+  - pymdownx.superfences
+  - codehilite
+  - pymdownx.highlight 
+  - pymdownx.inlinehilite 
+  - attr_list
+  - md_in_html
+  - admonition
+  
+
+
+
+
+
 theme: 
+  custom_dir: overrides
   favicon: img/PizzaJSx256C.png
   icon:
-      logo: material/book-open
-      repo: fontawesome/brands/github
+      logo: pizzajs/logo-white
+      repo: octicons/mark-github-16
   name: material
   locale: en
   highlightjs: true
@@ -41,11 +66,11 @@ theme:
   palette:
       - scheme: default
         toggle:
-          icon: material/brightness-7 
+          icon: octicons/sun-16
           name: Switch to dark mode
       - scheme: slate
         toggle:
-          icon: material/brightness-3
+          icon: octicons/moon-16
           name: Switch to light mode
           primary: black
           accent: blue 
@@ -65,20 +90,4 @@ extra:
     - icon: fontawesome/brands/github 
       link: https://github.com/joaquinlarroca
       name: joaquinlarroca
-
-markdown_extensions: 
-  - pymdownx.highlight:
-      anchor_linenums: true
-      linenums: true
-  - pymdownx.superfences
-  - codehilite
-  - pymdownx.highlight 
-  - pymdownx.inlinehilite 
-  - attr_list
-  - md_in_html
-  - admonition
-  
-
-
-
 

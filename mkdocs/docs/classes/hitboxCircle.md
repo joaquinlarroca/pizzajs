@@ -1,8 +1,12 @@
+```js
+new hitboxCircle(x, y, radius)
+```
+
 | Parameters | Type     | Description                                                    | Default Value |
 |------------|----------|----------------------------------------------------------------|---------------|
 | x          | `number` | The center of the circle in the x-axis                         | -             |
 | y          | `number` | The center of the circle in the y-axis                         | -             |
-| radius     | `number` | The radius of the circle                                       | -             |
+| radius     | `number` | The radius of the circle in px                                 | -             |
 
 !!! note
     Color is randomized, but can be changed.
@@ -42,7 +46,7 @@ Checks collision between hitboxCircle and hitbox 2.
 
 ### `collideCircle(hitbox)`
 
-Checks collision between two hitboxCircle. 
+Checks collision between two hitboxCircles. 
 
 | Parameters          | Type      | Description                                       | Default Value  |
 |---------------------|-----------|---------------------------------------------------|----------------|

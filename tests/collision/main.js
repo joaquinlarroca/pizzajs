@@ -1,32 +1,30 @@
-import * as pjs from "/source/modules/index.js"
+import { start, setup, actor, rect, hitbox2, hitboxCircle, clear, keyPressed, time, mouse } from "/source/modules/index.js"
 import "/source/Addons/mouseInfo.js"
-pjs.setup(500, 500, 0.9);
-pjs.loadFont("FiraCode", "/source/fonts/FiraCode/FiraCode-Regular.ttf")
+setup(500, 500, 0.9);
 
+let a = new actor(undefined, [100, 64], [48, 48], [0, 0])
 
-let a = new pjs.actor(undefined, [100, 64], [48, 48], [0, 0])
+let b = new actor("color:#FF0000", [234, 64], [32, 32], [0, 0])
 
-let b = new pjs.actor("color:#FF0000", [234, 64], [32, 32], [0, 0])
+let c = new rect([0, 0], [64, 64], "#FFFFFF")
+c.hitbox = new hitbox2(0, 0, 64, 64)
 
-let c = new pjs.rect([0, 0], [64, 64], "#FFFFFF")
-c.hitbox = new pjs.hitbox2(0, 0, 64, 64)
+let d = new rect([436, 0], [64, 64], "blue")
+d.hitbox = new hitbox2(436, 0, 64, 64)
 
-let d = new pjs.rect([436, 0], [64, 64], "blue")
-d.hitbox = new pjs.hitbox2(436, 0, 64, 64)
-
-let e = new pjs.actor(undefined, [333, 44], [48, 48], [0, 0])
+let e = new actor(undefined, [333, 44], [48, 48], [0, 0])
 e.radius = 48
-e.hitbox = new pjs.hitboxCircle(0, 0, 24)
+e.hitbox = new hitboxCircle(0, 0, 24)
 e.conditions.isDraggable = true
 
-let f = new pjs.actor(undefined, [200, 340], [48, 48], [0, 0])
+let f = new actor(undefined, [200, 340], [48, 48], [0, 0])
 f.radius = 48
-f.hitbox = new pjs.hitboxCircle(0, 0, 24)
+f.hitbox = new hitboxCircle(0, 0, 24)
 f.conditions.isDraggable = true
 
 a.conditions.isDraggable = true
 window.addEventListener("pjsUpdate", () => {
-    pjs.clear()
+    clear()
     a.draw()
 
     b.draw()
@@ -37,7 +35,7 @@ window.addEventListener("pjsUpdate", () => {
 
     e.draw()
     f.draw()
-    if (pjs.keyPressed("e")) {
+    if (keyPressed("e")) {
         a.hitbox.draw()
         b.hitbox.draw()
         c.hitbox.draw()
@@ -46,18 +44,18 @@ window.addEventListener("pjsUpdate", () => {
         f.hitbox.draw()
     }
 
-    if (pjs.keyPressed("d") && c.width < 436) {
-        c.width += 5
+    if (keyPressed("d") && c.width < 436) {
+        c.width += 200 * time.delta
     }
-    if (pjs.keyPressed("a") && c.width > 64) {
-        c.width -= 5
+    if (keyPressed("a") && c.width > 64) {
+        c.width -= 200 * time.delta
     }
 
-    if (pjs.keyPressed("s") && b.y < 128) {
-        b.y += 5
+    if (keyPressed("s") && b.y < 128) {
+        b.y += 150 * time.delta
     }
-    if (pjs.keyPressed("w") && b.y > 0) {
-        b.y -= 5
+    if (keyPressed("w") && b.y > 0) {
+        b.y -= 150 * time.delta
     }
     e.hitbox.x = e.pos[0]
     e.hitbox.y = e.pos[1]
@@ -73,14 +71,14 @@ window.addEventListener("pjsUpdate", () => {
     else {
         e.color = "#FFFFFF"
     }
-    
+
     if (f.hitbox.collide2(d.hitbox)) {
         f.color = "#FFF000"
     }
     else if (f.hitbox.collideCircle(e.hitbox)) {
         f.color = "#FF00FF"
     }
-    else if (f.hitbox.collidepoint(pjs.mouse.pos)) {
+    else if (f.hitbox.collidepoint(mouse.pos)) {
         f.color = "#000EEE"
     }
     else {
@@ -120,4 +118,4 @@ window.addEventListener("pjsUpdate", () => {
     }
 })
 
-pjs.start()
+start()

@@ -44,8 +44,14 @@ export const errors_listeners = {
 };
 
 export const image = {}
+export let time = {
+    time: 0,
+    delta: -1,
+    scale: 1,
+    frameCount: 0,
+}
 export let global = {
-    version: "v1.6",
+    version: "v1.7",
     build: "Beta",
     debug: false,
     all: [],
@@ -54,6 +60,7 @@ export let global = {
     sliders: [],
     rects: [],
     sounds: [],
+    fps: -1,
     hasLoaded: false,
     toLoad: 0,
     Loaded: 0,
@@ -62,8 +69,6 @@ export let global = {
     setupWidth: -1,
     setupHeight: -1,
     shakingScreen: false,
-    lastTimestamp: 0,
-    deltaTime: 0,
     allListenersHadSetup: false,
     keyboardListenersHadSetup: false,
     mouseListenersHadSetup: false,

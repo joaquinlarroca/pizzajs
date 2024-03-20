@@ -1,6 +1,10 @@
+```js
+new hitbox(that, multiplier, color, offsetX, offsetY)
+```
+
 | Parameters | Type     | Description                                                    | Default Value |
 |------------|----------|----------------------------------------------------------------|---------------|
-| that       | `object` | An object that has x, y, width and height.                     | -             |
+| that       | `object` | An object that has x, y, width, height, etc.                   | -             |
 | multiplier | `number` | Indicates the scale of the hitbox 0 being 100% and 1 being 0%. | 0             |
 | color      | `string` | The color of the hitbox.                                       | undefined     |
 | offsetX    | `number` | The horizontal offset for positioning the hitbox.              | 0             |
@@ -19,7 +23,7 @@
 | `offsetY`   | The vertical offset used for positioning the hitbox.  |
 | `color`     | The color of the hitbox.                              |
 | `lineWidth` | The width of the stroke for drawing the hitbox.       |
-| `params`    | Object for handling update instructions.              |
+| `params`    | String that contains hitbox data.              |
 
 
 ## Methods
